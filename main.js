@@ -1,0 +1,495 @@
+import Lenis from '@studio-freight/lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ===========================
+// LENIS SMOOTH SCROLL
+// ===========================
+
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  direction: 'vertical',
+  gestureDirection: 'vertical',
+  smooth: true,
+  mouseMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
+  infinite: false,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+
+
+// ===========================
+// FULL SCREEN MENU
+// ===========================
+
+const menuToggle = document.getElementById('menu-toggle');
+const menuOverlay = document.getElementById('menu-overlay');
+const menuLabel = document.getElementById('menu-toggle-label');
+const menuItems = document.querySelectorAll('.menu-nav__item');
+const menuLinks = document.querySelectorAll('.menu-nav__link');
+const menuTexts = document.querySelectorAll('.menu-nav__text');
+const topLine = document.querySelector('.menu-toggle__line--top');
+const bottomLine = document.querySelector('.menu-toggle__line--bottom');
+
+let isMenuOpen = false;
+let menuTimeline = null;
+
+// Build the open/close timeline
+function createMenuTimeline() {
+  const tl = gsap.timeline({
+    paused: true,
+    defaults: { ease: 'power4.inOut' },
+    onStart: () => {
+      menuOverlay.classList.add('is-open');
+      lenis.stop();
+    },
+    onReverseComplete: () => {
+      menuOverlay.classList.remove('is-open');
+      lenis.start();
+    },
+  });
+
+  // 1. Reveal the overlay with clip-path
+  tl.to(menuOverlay, {
+    clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+    duration: 1,
+    ease: 'power4.inOut',
+  });
+
+  // 2. Stagger-animate menu text items from below
+  tl.from(
+    menuTexts,
+    {
+      yPercent: 120,
+      duration: 0.8,
+      stagger: 0.08,
+      ease: 'power4.out',
+    },
+    '-=0.4'
+  );
+
+  return tl;
+}
+
+// Hamburger → X animation
+function animateToggleToClose() {
+  gsap.to(topLine, {
+    rotation: 45,
+    y: 9,
+    duration: 0.4,
+    ease: 'power2.inOut',
+  });
+  gsap.to(bottomLine, {
+    rotation: -45,
+    y: -9,
+    duration: 0.4,
+    ease: 'power2.inOut',
+  });
+  gsap.to(menuLabel, {
+    opacity: 0,
+    x: -10,
+    duration: 0.25,
+    ease: 'power2.in',
+    onComplete: () => {
+      menuLabel.textContent = 'CLOSE';
+      gsap.to(menuLabel, {
+        opacity: 1,
+        x: 0,
+        duration: 0.25,
+        ease: 'power2.out',
+      });
+    },
+  });
+}
+
+// X → Hamburger animation
+function animateToggleToMenu() {
+  gsap.to(topLine, {
+    rotation: 0,
+    y: 0,
+    duration: 0.4,
+    ease: 'power2.inOut',
+  });
+  gsap.to(bottomLine, {
+    rotation: 0,
+    y: 0,
+    duration: 0.4,
+    ease: 'power2.inOut',
+  });
+  gsap.to(menuLabel, {
+    opacity: 0,
+    x: 10,
+    duration: 0.25,
+    ease: 'power2.in',
+    onComplete: () => {
+      menuLabel.textContent = 'MENU';
+      gsap.to(menuLabel, {
+        opacity: 1,
+        x: 0,
+        duration: 0.25,
+        ease: 'power2.out',
+      });
+    },
+  });
+}
+
+// Toggle handler
+menuToggle.addEventListener('click', () => {
+  if (!menuTimeline) {
+    menuTimeline = createMenuTimeline();
+  }
+
+  if (isMenuOpen) {
+    menuTimeline.reverse();
+    animateToggleToMenu();
+  } else {
+    menuTimeline.play(0);
+    animateToggleToClose();
+  }
+
+  isMenuOpen = !isMenuOpen;
+});
+
+// ===========================
+// HOVER IMAGE CARD REVEAL
+// ===========================
+
+let activeHoverItem = null;
+
+menuItems.forEach((item) => {
+  const card = item.querySelector('.menu-nav__card');
+  let hoverTl = null;
+
+  item.addEventListener('mouseenter', () => {
+    if (activeHoverItem && activeHoverItem !== item) {
+      activeHoverItem.dispatchEvent(new Event('mouseleave'));
+    }
+    activeHoverItem = item;
+
+    // Kill any running animation on this card
+    if (hoverTl) hoverTl.kill();
+
+    hoverTl = gsap.timeline();
+
+    const textElement = item.querySelector('.menu-nav__text');
+
+    // Shift text to the right
+    hoverTl.to(textElement, {
+      x: card.offsetWidth + 20,
+      duration: 0.6,
+      ease: 'power3.out',
+    }, 0);
+
+    // Reveal the card from the left via clip-path
+    hoverTl.to(card, {
+      opacity: 1,
+      clipPath: 'inset(0 0% 0 0)',
+      duration: 0.6,
+      ease: 'power3.out',
+    }, 0);
+
+    // Slight scale-up on the image for cinematic feel
+    hoverTl.to(
+      card.querySelector('img'),
+      {
+        scale: 1.05,
+        duration: 1.2,
+        ease: 'power2.out',
+      },
+      0
+    );
+
+    // Dim the other items
+    menuItems.forEach((otherItem) => {
+      if (otherItem !== item) {
+        gsap.to(otherItem.querySelector('.menu-nav__link'), {
+          opacity: 0.25,
+          duration: 0.4,
+          ease: 'power2.out',
+        });
+      }
+    });
+  });
+
+  item.addEventListener('mouseleave', () => {
+    if (activeHoverItem === item) {
+      activeHoverItem = null;
+    }
+
+    if (hoverTl) hoverTl.kill();
+
+    hoverTl = gsap.timeline();
+
+    const textElement = item.querySelector('.menu-nav__text');
+
+    // Reset text position
+    hoverTl.to(textElement, {
+      x: 0,
+      duration: 0.4,
+      ease: 'power3.in',
+    }, 0);
+
+    // Hide the card back to left
+    hoverTl.to(card, {
+      clipPath: 'inset(0 100% 0 0)',
+      duration: 0.4,
+      ease: 'power3.in',
+    }, 0);
+
+    hoverTl.set(card, {
+      opacity: 0,
+    });
+
+    // Reset image scale
+    gsap.to(card.querySelector('img'), {
+      scale: 1,
+      duration: 0.4,
+      ease: 'power2.in',
+    });
+
+    // Restore all items
+    menuItems.forEach((otherItem) => {
+      gsap.to(otherItem.querySelector('.menu-nav__link'), {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out',
+      });
+    });
+  });
+});
+
+// ===========================
+// SERVICES HOVER REVEAL
+// ===========================
+
+const servicesList = document.getElementById('services-list');
+if (servicesList) {
+  const serviceItems = document.querySelectorAll('.services-item');
+  let activeService = null;
+
+  serviceItems.forEach((item) => {
+    const card = item.querySelector('.services-item__card');
+    const tag = item.querySelector('.services-item__tag');
+    let hoverTl = null;
+
+    item.addEventListener('mouseenter', () => {
+      servicesList.classList.add('is-hovering');
+      item.classList.add('is-active');
+
+      if (activeService && activeService !== item) {
+        activeService.dispatchEvent(new Event('mouseleave'));
+      }
+      activeService = item;
+
+      if (hoverTl) hoverTl.kill();
+      hoverTl = gsap.timeline();
+
+      hoverTl.to(card, {
+        opacity: 1,
+        clipPath: 'inset(0 0% 0 0)',
+        duration: 0.6,
+        ease: 'power3.out',
+      }, 0);
+
+      hoverTl.to(card.querySelector('img'), {
+        scale: 1.05,
+        duration: 1.2,
+        ease: 'power2.out',
+      }, 0);
+
+      hoverTl.fromTo(tag, {
+        opacity: 0,
+        x: -20,
+      }, {
+        opacity: 1,
+        x: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+      }, 0.1);
+    });
+
+    item.addEventListener('mouseleave', () => {
+      item.classList.remove('is-active');
+
+      if (activeService === item) {
+        activeService = null;
+        servicesList.classList.remove('is-hovering');
+      }
+
+      if (hoverTl) hoverTl.kill();
+      hoverTl = gsap.timeline();
+
+      hoverTl.to(card, {
+        clipPath: 'inset(0 100% 0 0)',
+        duration: 0.4,
+        ease: 'power3.in',
+      }, 0);
+
+      hoverTl.set(card, { opacity: 0 });
+
+      hoverTl.to(card.querySelector('img'), {
+        scale: 1,
+        duration: 0.4,
+        ease: 'power2.in',
+      }, 0);
+
+      hoverTl.to(tag, {
+        opacity: 0,
+        x: 10,
+        duration: 0.3,
+        ease: 'power2.in',
+      }, 0);
+    });
+  });
+}
+
+// ===========================
+// STACKING CARDS ON SCROLL
+// ===========================
+const projectCards = gsap.utils.toArray('.project-card');
+
+projectCards.forEach((card, index) => {
+  if (index === projectCards.length - 1) return;
+
+  gsap.to(card, {
+    scale: 0.95,
+    opacity: 0.6,
+    transformOrigin: 'top center',
+    scrollTrigger: {
+      trigger: card,
+      start: 'top 10%', // Match the sticky top position
+      endTrigger: projectCards[index + 1],
+      end: 'top 10%', // When the next card hits the top
+      scrub: true,
+    }
+  });
+});
+
+// ===========================
+// EXPLORE ARCHIVES 3D MARQUEE
+// ===========================
+
+const archivesMarquee = document.getElementById('archives-marquee');
+if (archivesMarquee) {
+  // Populate horizontal marquee text
+  for (let i = 0; i < 10; i++) {
+    const span = document.createElement('span');
+    span.innerHTML = `EXPLORE THE ARCHIVES <span class="starburst">✺</span>`;
+    archivesMarquee.appendChild(span);
+  }
+
+  // Animate horizontal marquee
+  gsap.to(archivesMarquee, {
+    xPercent: -50,
+    ease: 'none',
+    duration: 20,
+    repeat: -1,
+  });
+}
+
+const archivesGrid = document.getElementById('archives-3d-grid');
+if (archivesGrid) {
+  const images = [
+    './service_art.png',
+    './service_branding.png',
+    './menu_work.png',
+    './menu_services.png',
+    './menu_approach.png',
+    './guy_presenting.png',
+    'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=800&auto=format&fit=crop'
+  ];
+
+  const cols = archivesGrid.querySelectorAll('.archives-col');
+  const chunkSize = Math.ceil(images.length / 3);
+
+  cols.forEach((col, index) => {
+    const start = index * chunkSize;
+    const colImages = images.slice(start, start + chunkSize);
+    
+    // Duplicate for infinite effect if we wanted to, but the CSS animation handles it via alternate
+    colImages.forEach(src => {
+      const card = document.createElement('div');
+      card.className = 'archives-card';
+      const img = document.createElement('img');
+      img.src = src;
+      img.onerror = () => { img.src = './service_art.png'; }; // Fallback
+      card.appendChild(img);
+      col.appendChild(card);
+    });
+  });
+}
+
+// ===========================
+// FOOTER 3D HAND HOVER
+// ===========================
+
+const footerCta = document.getElementById('footer-cta');
+const footerHand = document.getElementById('footer-hand');
+
+if (footerCta && footerHand) {
+  let isHoveringCta = false;
+  
+  footerCta.addEventListener('mouseenter', () => {
+    isHoveringCta = true;
+    gsap.to(footerHand, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.4,
+      ease: 'back.out(1.5)',
+    });
+  });
+  
+  footerCta.addEventListener('mouseleave', () => {
+    isHoveringCta = false;
+    gsap.to(footerHand, {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.3,
+      ease: 'power2.in',
+    });
+  });
+  
+  footerCta.addEventListener('mousemove', (e) => {
+    if (!isHoveringCta) return;
+    
+    // Calculate relative mouse position inside the footer-cta container
+    const rect = footerCta.getBoundingClientRect();
+    const relX = e.clientX - rect.left - (footerHand.offsetWidth / 2);
+    const relY = e.clientY - rect.top - (footerHand.offsetHeight / 2);
+    
+    // Use gsap to tween to the mouse position for a smooth trailing effect
+    gsap.to(footerHand, {
+      x: relX,
+      y: relY,
+      duration: 0.6,
+      ease: 'power3.out',
+    });
+  });
+}
+
+// ===========================
+// BACK TO TOP
+// ===========================
+const backToTop = document.getElementById('back-to-top');
+if (backToTop) {
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    lenis.scrollTo(0, { duration: 1.5 });
+  });
+}

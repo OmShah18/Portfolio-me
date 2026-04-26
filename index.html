@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Designer Portfolio</title>
+  <meta name="description" content="Portfolio of a Webflow Developer & Digital Designer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <!-- Menu Toggle Button -->
+  <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+    <div class="menu-toggle__inner">
+      <span class="menu-toggle__line menu-toggle__line--top"></span>
+      <span class="menu-toggle__line menu-toggle__line--bottom"></span>
+    </div>
+    <span class="menu-toggle__label" id="menu-toggle-label">MENU</span>
+  </button>
+
+  <!-- Sticky Logo -->
+  <div class="velorah-nav__logo">Om Shah</div>
+
+  <!-- Full Screen Menu Overlay -->
+  <nav class="menu-overlay" id="menu-overlay">
+    <div class="menu-overlay__inner">
+      <ul class="menu-nav" id="menu-nav">
+        <li class="menu-nav__item" data-img="./menu_home.png">
+          <a href="#" class="menu-nav__link">
+            <span class="menu-nav__text">HOME</span>
+          </a>
+          <div class="menu-nav__card">
+            <img src="./menu_home.png" alt="Home preview" />
+          </div>
+        </li>
+        <li class="menu-nav__item" data-img="./menu_work.png">
+          <a href="#" class="menu-nav__link">
+            <span class="menu-nav__text">WORK</span>
+          </a>
+          <div class="menu-nav__card">
+            <img src="./menu_work.png" alt="Work preview" />
+          </div>
+        </li>
+        <li class="menu-nav__item" data-img="./menu_services.png">
+          <a href="#" class="menu-nav__link">
+            <span class="menu-nav__text">SERVICES</span>
+          </a>
+          <div class="menu-nav__card">
+            <img src="./menu_services.png" alt="Services preview" />
+          </div>
+        </li>
+        <li class="menu-nav__item" data-img="./menu_approach.png">
+          <a href="#" class="menu-nav__link">
+            <span class="menu-nav__text">APPROACH</span>
+          </a>
+          <div class="menu-nav__card">
+            <img src="./menu_approach.png" alt="Approach preview" />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <section class="velorah-hero">
+        <video class="velorah-hero__video" autoplay loop muted playsinline src="hero-4k.mp4">
+        </video>
+
+        <nav class="velorah-nav">
+        </nav>
+
+        <div class="velorah-hero__content">
+          <h1 class="velorah-hero__h1 animate-fade-rise">
+            Where <em class="muted-em">dreams</em> rise <em class="muted-em">through the silence.</em>
+          </h1>
+          <p class="velorah-hero__subtext animate-fade-rise-delay">
+            We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital
+            spaces for sharp focus and inspired work.
+          </p>
+          <button class="liquid-glass btn-large animate-fade-rise-delay-2">
+            Begin Journey
+          </button>
+        </div>
+      </section>
+
+      <section class="services-section">
+        <div class="services-header">
+          <div class="services-header__left">SERVICES</div>
+          <div class="services-header__right"></div>
+        </div>
+
+        <ul class="services-list" id="services-list">
+          <li class="services-item" data-img="./service_art.png" data-tag="STORYTELLING">
+            <div class="services-item__card"><img src="./service_art.png" alt="Art Direction" /></div>
+            <span class="services-item__text">ART DIRECTION</span>
+            <span class="services-item__tag">STORYTELLING</span>
+          </li>
+          <li class="services-item" data-img="./service_branding.png" data-tag="IDENTITY">
+            <div class="services-item__card"><img src="./service_branding.png" alt="Branding" /></div>
+            <span class="services-item__text">BRANDING</span>
+            <span class="services-item__tag">IDENTITY</span>
+          </li>
+          <li class="services-item" data-img="./menu_work.png" data-tag="DEVELOPMENT">
+            <div class="services-item__card"><img src="./menu_work.png" alt="Webflow" /></div>
+            <span class="services-item__text">WEBFLOW</span>
+            <span class="services-item__tag">DEVELOPMENT</span>
+          </li>
+          <li class="services-item" data-img="./menu_services.png" data-tag="INTERFACES">
+            <div class="services-item__card"><img src="./menu_services.png" alt="UI/UX Design" /></div>
+            <span class="services-item__text">UI/UX DESIGN</span>
+            <span class="services-item__tag">INTERFACES</span>
+          </li>
+          <li class="services-item" data-img="./menu_approach.png" data-tag="INTERACTION">
+            <div class="services-item__card"><img src="./menu_approach.png" alt="GSAP Animations" /></div>
+            <span class="services-item__text">GSAP ANIMATIONS</span>
+            <span class="services-item__tag">INTERACTION</span>
+          </li>
+          <li class="services-item" data-img="./service_art.png" data-tag="EXPERIENCES">
+            <div class="services-item__card"><img src="./service_art.png" alt="3D & Motion" /></div>
+            <span class="services-item__text">3D & MOTION</span>
+            <span class="services-item__tag">EXPERIENCES</span>
+          </li>
+          <li class="services-item" data-img="./service_branding.png" data-tag="CAMPAIGNS">
+            <div class="services-item__card"><img src="./service_branding.png" alt="Advertising" /></div>
+            <span class="services-item__text">ADVERTISING</span>
+            <span class="services-item__tag">CAMPAIGNS</span>
+          </li>
+          <li class="services-item" data-img="./menu_work.png" data-tag="STRATEGY">
+            <div class="services-item__card"><img src="./menu_work.png" alt="SEO & Content" /></div>
+            <span class="services-item__text">SEO & CONTENT</span>
+            <span class="services-item__tag">STRATEGY</span>
+          </li>
+        </ul>
+
+        <div class="services-footer">
+          <div class="services-footer__left">WE CRAFT BOLD DESIGN & CLEAN WEBFLOW.</div>
+          <div class="services-footer__right">BARCELONA, SPAIN&nbsp;&nbsp;&nbsp;06:35:30</div>
+        </div>
+      </section>
+
+      </section>
+
+      <!-- =========================== -->
+      <!-- SELECTED PROJECTS SECTION   -->
+      <!-- =========================== -->
+      <section class="projects-section" id="projects">
+        <div class="projects-container">
+          <!-- Card 1 -->
+          <div class="project-card" id="card-1">
+            <div class="project-card__left">
+              <div class="project-card__title">
+                <h2>ACCORDION &ndash;<br />A PRODUCTION COMPANY</h2>
+                <div class="project-card__tags">
+                  <span class="tag">WEBFLOW</span>
+                  <span class="tag">PORTFOLIO</span>
+                  <span class="tag">INTERACTIONS</span>
+                </div>
+              </div>
+              <div class="project-card__bottom">
+                <p>Designed by Holographik, I built this site for Accordion that was launched with their new identity.
+                  One of my favorites in a long time.</p>
+                <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
+              </div>
+            </div>
+            <div class="project-card__right">
+              <div class="project-card__image">
+                <img src="./project_1.png" alt="Accordion" onerror="this.src='./service_branding.png'" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="project-card" id="card-2">
+            <div class="project-card__left">
+              <div class="project-card__title">
+                <h2>DOCUSIGN &ndash;<br />BRAND WEBSITE</h2>
+                <div class="project-card__tags">
+                  <span class="tag">WEBFLOW</span>
+                  <span class="tag">INTERACTIVE</span>
+                  <span class="tag">EXPERIENCE SITE</span>
+                </div>
+              </div>
+              <div class="project-card__bottom">
+                <p>To celebrate their rebrand, Docusign partnered with BASIC/DEPT&reg; to give visitors an interactive
+                  behind-the-scenes tour of their new brand.</p>
+                <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
+              </div>
+            </div>
+            <div class="project-card__right">
+              <div class="project-card__image">
+                <img src="./project_2.png" alt="Docusign" onerror="this.src='./service_art.png'" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="project-card" id="card-3">
+            <div class="project-card__left">
+              <div class="project-card__title">
+                <h2>WALBI &ndash;<br />EXPERIENCE WEBSITE</h2>
+                <div class="project-card__tags">
+                  <span class="tag">WEBFLOW</span>
+                  <span class="tag">DEVELOPMENT</span>
+                  <span class="tag">INTERACTIONS</span>
+                </div>
+              </div>
+              <div class="project-card__bottom">
+                <p>Walbi is an AI-powered crypto trading platform and app. I teamed up with Holographik once again to
+                  bring this experimental website to life.</p>
+                <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
+              </div>
+            </div>
+            <div class="project-card__right">
+              <div class="project-card__image">
+                <img src="./project_3.png" alt="Walbi" onerror="this.src='./service_branding.png'" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="project-card" id="card-4">
+            <div class="project-card__left">
+              <div class="project-card__title">
+                <h2>LINEAR &ndash;<br />PRODUCT LAUNCH</h2>
+                <div class="project-card__tags">
+                  <span class="tag">WEBFLOW</span>
+                  <span class="tag">ANIMATION</span>
+                  <span class="tag">3D INTEGRATION</span>
+                </div>
+              </div>
+              <div class="project-card__bottom">
+                <p>A sleek, dark-mode focused landing page for the new features rollout. Highlighting performant
+                  animations and precise layouts.</p>
+                <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
+              </div>
+            </div>
+            <div class="project-card__right">
+              <div class="project-card__image">
+                <img src="./project_4.png" alt="Linear" onerror="this.src='./menu_work.png'" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="project-card" id="card-5">
+            <div class="project-card__left">
+              <div class="project-card__title">
+                <h2>RAYCAST &ndash;<br />DEVELOPER TOOLS</h2>
+                <div class="project-card__tags">
+                  <span class="tag">FRONTEND</span>
+                  <span class="tag">WEBFLOW</span>
+                  <span class="tag">PERFORMANCE</span>
+                </div>
+              </div>
+              <div class="project-card__bottom">
+                <p>Bringing native app performance to the web. This marketing site pushes the boundaries of what is
+                  possible in modern web development.</p>
+                <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
+              </div>
+            </div>
+            <div class="project-card__right">
+              <div class="project-card__image">
+                <img src="./project_5.png" alt="Raycast" onerror="this.src='./menu_services.png'" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================== -->
+      <!-- EXPLORE THE ARCHIVES SECTION-->
+      <!-- =========================== -->
+      <section class="archives-section">
+        <!-- Top Marquee -->
+        <div class="archives-marquee-wrapper">
+          <div class="archives-marquee" id="archives-marquee">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 3D Image Grid -->
+        <div class="archives-3d-wrapper">
+          <div class="archives-3d-container">
+            <div class="archives-3d-grid" id="archives-3d-grid">
+              <div class="archives-col col-even"></div>
+              <div class="archives-col col-odd"></div>
+              <div class="archives-col col-even"></div>
+            </div>
+          </div>
+      </section>
+
+      <!-- =========================== -->
+      <!-- FOOTER SECTION              -->
+      <!-- =========================== -->
+      <footer class="footer-section">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-top__left">
+              Designer and Webflow Developer<br />Portfolio 2022 &ndash; 2024
+            </div>
+            <div class="footer-top__center">
+              ILJA VAN ECK&trade;
+            </div>
+            <div class="footer-top__right">
+              Available for freelance work<br />January 2025
+            </div>
+          </div>
+
+          <div class="footer-middle">
+            <div class="footer-cta" id="footer-cta">
+              <h2 class="footer-cta__text">INTERESTED IN<br />WORKING TOGETHER?</h2>
+              <div class="footer-cta__hand" id="footer-hand">
+                ✌🏼
+              </div>
+            </div>
+            <div class="footer-email">
+              <span>Drop me an email:</span>
+              <a href="mailto:hey@iljavaneck.com">hey@iljavaneck.com</a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-bottom__left">
+              Design by: Martin Briceno<br />Development by: Ilja van Eck
+            </div>
+            <div class="footer-bottom__center">
+              <a href="#" class="footer-pill">AWWWARDS</a>
+              <a href="#" class="footer-pill">INSTAGRAM</a>
+              <a href="#" class="footer-pill">TWITTER</a>
+              <a href="#" class="footer-pill">LINKEDIN</a>
+            </div>
+            <div class="footer-bottom__right">
+              <a href="#" class="back-to-top" id="back-to-top">Back to top &uarr;</a><br />
+              &copy;2024 &ndash; All Rights Reserved
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
