@@ -8,10 +8,11 @@
   <meta name="description" content="Portfolio of a Webflow Developer & Digital Designer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-BkXOpyRM.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-ancFWLPt.css">
+  <script type="module" crossorigin src="/assets/index-CG75feOO.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BIUCeotY.css">
 </head>
 
 <body>
@@ -23,6 +24,9 @@
     </div>
     <span class="menu-toggle__label" id="menu-toggle-label">MENU</span>
   </button>
+
+  <!-- Sticky Logo -->
+  <div class="velorah-nav__logo">Om Shah</div>
 
   <!-- Full Screen Menu Overlay -->
   <nav class="menu-overlay" id="menu-overlay">
@@ -67,27 +71,24 @@
   <main id="smooth-wrapper">
     <div id="smooth-content">
 
-      <section class="hero">
-        <div class="marquee-container">
-          <div class="marquee" id="marquee-1">
-            <span class="marquee-text"> DIGITAL DESIGNER <span class="spacer">&nbsp;—&nbsp;</span> </span>
-            <span class="marquee-text">WEBFLOW DEVELOPER & DIGITAL DESIGNER <span class="spacer">&nbsp;—&nbsp;</span>
-            </span>
-            <span class="marquee-text">WEBFLOW DEVELOPER & DIGITAL DESIGNER <span class="spacer">&nbsp;—&nbsp;</span>
-            </span>
-            <span class="marquee-text">WEBFLOW DEVELOPER & DIGITAL DESIGNER <span class="spacer">&nbsp;—&nbsp;</span>
-            </span>
-          </div>
-        </div>
+      <section class="velorah-hero">
+        <video class="velorah-hero__video" autoplay loop muted playsinline src="/assets/hero-4k-BoAsoTKr.mp4">
+        </video>
 
-        <div class="content-wrapper">
-          <div class="intro-card">
-            <p>Hi! I'm Ilja van Eck. I work with people from all over the world to create tailor-made Webflow
-              experiences and websites.</p>
-          </div>
-          <div class="image-card">
-            <img src="/assets/guy_presenting-CIezTVWI.png" alt="Ilja van Eck presenting" />
-          </div>
+        <nav class="velorah-nav">
+        </nav>
+
+        <div class="velorah-hero__content">
+          <h1 class="velorah-hero__h1 animate-fade-rise">
+            Where <em class="muted-em">dreams</em> rise <em class="muted-em">through the silence.</em>
+          </h1>
+          <p class="velorah-hero__subtext animate-fade-rise-delay">
+            We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital
+            spaces for sharp focus and inspired work.
+          </p>
+          <button class="liquid-glass btn-large animate-fade-rise-delay-2">
+            Begin Journey
+          </button>
         </div>
       </section>
 
@@ -96,7 +97,7 @@
           <div class="services-header__left">SERVICES</div>
           <div class="services-header__right"></div>
         </div>
-        
+
         <ul class="services-list" id="services-list">
           <li class="services-item" data-img="./service_art.png" data-tag="STORYTELLING">
             <div class="services-item__card"><img src="/assets/service_art-B8RcOySt.png" alt="Art Direction" /></div>
@@ -157,7 +158,7 @@
           <div class="project-card" id="card-1">
             <div class="project-card__left">
               <div class="project-card__title">
-                <h2>ACCORDION &ndash;<br/>A PRODUCTION COMPANY</h2>
+                <h2>ACCORDION &ndash;<br />A PRODUCTION COMPANY</h2>
                 <div class="project-card__tags">
                   <span class="tag">WEBFLOW</span>
                   <span class="tag">PORTFOLIO</span>
@@ -165,7 +166,8 @@
                 </div>
               </div>
               <div class="project-card__bottom">
-                <p>Designed by Holographik, I built this site for Accordion that was launched with their new identity. One of my favorites in a long time.</p>
+                <p>Designed by Holographik, I built this site for Accordion that was launched with their new identity.
+                  One of my favorites in a long time.</p>
                 <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
               </div>
             </div>
@@ -180,7 +182,7 @@
           <div class="project-card" id="card-2">
             <div class="project-card__left">
               <div class="project-card__title">
-                <h2>DOCUSIGN &ndash;<br/>BRAND WEBSITE</h2>
+                <h2>DOCUSIGN &ndash;<br />BRAND WEBSITE</h2>
                 <div class="project-card__tags">
                   <span class="tag">WEBFLOW</span>
                   <span class="tag">INTERACTIVE</span>
@@ -188,7 +190,8 @@
                 </div>
               </div>
               <div class="project-card__bottom">
-                <p>To celebrate their rebrand, Docusign partnered with BASIC/DEPT&reg; to give visitors an interactive behind-the-scenes tour of their new brand.</p>
+                <p>To celebrate their rebrand, Docusign partnered with BASIC/DEPT&reg; to give visitors an interactive
+                  behind-the-scenes tour of their new brand.</p>
                 <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
               </div>
             </div>
@@ -203,7 +206,7 @@
           <div class="project-card" id="card-3">
             <div class="project-card__left">
               <div class="project-card__title">
-                <h2>WALBI &ndash;<br/>EXPERIENCE WEBSITE</h2>
+                <h2>WALBI &ndash;<br />EXPERIENCE WEBSITE</h2>
                 <div class="project-card__tags">
                   <span class="tag">WEBFLOW</span>
                   <span class="tag">DEVELOPMENT</span>
@@ -211,7 +214,8 @@
                 </div>
               </div>
               <div class="project-card__bottom">
-                <p>Walbi is an AI-powered crypto trading platform and app. I teamed up with Holographik once again to bring this experimental website to life.</p>
+                <p>Walbi is an AI-powered crypto trading platform and app. I teamed up with Holographik once again to
+                  bring this experimental website to life.</p>
                 <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
               </div>
             </div>
@@ -226,7 +230,7 @@
           <div class="project-card" id="card-4">
             <div class="project-card__left">
               <div class="project-card__title">
-                <h2>LINEAR &ndash;<br/>PRODUCT LAUNCH</h2>
+                <h2>LINEAR &ndash;<br />PRODUCT LAUNCH</h2>
                 <div class="project-card__tags">
                   <span class="tag">WEBFLOW</span>
                   <span class="tag">ANIMATION</span>
@@ -234,7 +238,8 @@
                 </div>
               </div>
               <div class="project-card__bottom">
-                <p>A sleek, dark-mode focused landing page for the new features rollout. Highlighting performant animations and precise layouts.</p>
+                <p>A sleek, dark-mode focused landing page for the new features rollout. Highlighting performant
+                  animations and precise layouts.</p>
                 <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
               </div>
             </div>
@@ -249,7 +254,7 @@
           <div class="project-card" id="card-5">
             <div class="project-card__left">
               <div class="project-card__title">
-                <h2>RAYCAST &ndash;<br/>DEVELOPER TOOLS</h2>
+                <h2>RAYCAST &ndash;<br />DEVELOPER TOOLS</h2>
                 <div class="project-card__tags">
                   <span class="tag">FRONTEND</span>
                   <span class="tag">WEBFLOW</span>
@@ -257,7 +262,8 @@
                 </div>
               </div>
               <div class="project-card__bottom">
-                <p>Bringing native app performance to the web. This marketing site pushes the boundaries of what is possible in modern web development.</p>
+                <p>Bringing native app performance to the web. This marketing site pushes the boundaries of what is
+                  possible in modern web development.</p>
                 <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
               </div>
             </div>
@@ -270,6 +276,76 @@
 
         </div>
       </section>
+
+      <!-- =========================== -->
+      <!-- EXPLORE THE ARCHIVES SECTION-->
+      <!-- =========================== -->
+      <section class="archives-section">
+        <!-- Top Marquee -->
+        <div class="archives-marquee-wrapper">
+          <div class="archives-marquee" id="archives-marquee">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 3D Image Grid -->
+        <div class="archives-3d-wrapper">
+          <div class="archives-3d-container">
+            <div class="archives-3d-grid" id="archives-3d-grid">
+              <div class="archives-col col-even"></div>
+              <div class="archives-col col-odd"></div>
+              <div class="archives-col col-even"></div>
+            </div>
+          </div>
+      </section>
+
+      <!-- =========================== -->
+      <!-- FOOTER SECTION              -->
+      <!-- =========================== -->
+      <footer class="footer-section">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-top__left">
+              Designer and Webflow Developer<br />Portfolio 2022 &ndash; 2024
+            </div>
+            <div class="footer-top__center">
+              ILJA VAN ECK&trade;
+            </div>
+            <div class="footer-top__right">
+              Available for freelance work<br />January 2025
+            </div>
+          </div>
+
+          <div class="footer-middle">
+            <div class="footer-cta" id="footer-cta">
+              <h2 class="footer-cta__text">INTERESTED IN<br />WORKING TOGETHER?</h2>
+              <div class="footer-cta__hand" id="footer-hand">
+                ✌🏼
+              </div>
+            </div>
+            <div class="footer-email">
+              <span>Drop me an email:</span>
+              <a href="mailto:hey@iljavaneck.com">hey@iljavaneck.com</a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-bottom__left">
+              Design by: Martin Briceno<br />Development by: Ilja van Eck
+            </div>
+            <div class="footer-bottom__center">
+              <a href="#" class="footer-pill">AWWWARDS</a>
+              <a href="#" class="footer-pill">INSTAGRAM</a>
+              <a href="#" class="footer-pill">TWITTER</a>
+              <a href="#" class="footer-pill">LINKEDIN</a>
+            </div>
+            <div class="footer-bottom__right">
+              <a href="#" class="back-to-top" id="back-to-top">Back to top &uarr;</a><br />
+              &copy;2024 &ndash; All Rights Reserved
+            </div>
+          </div>
+        </div>
+      </footer>
 
     </div>
   </main>
