@@ -161,6 +161,17 @@ menuToggle.addEventListener('click', () => {
   isMenuOpen = !isMenuOpen;
 });
 
+// Close menu when a link is clicked
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (isMenuOpen && menuTimeline) {
+      menuTimeline.reverse();
+      animateToggleToMenu();
+      isMenuOpen = false;
+    }
+  });
+});
+
 // ===========================
 // HOVER IMAGE CARD REVEAL
 // ===========================
@@ -182,10 +193,10 @@ menuItems.forEach((item) => {
 
     hoverTl = gsap.timeline();
 
-    const textElement = item.querySelector('.menu-nav__text');
+    const linkElement = item.querySelector('.menu-nav__link');
 
     // Shift text to the right
-    hoverTl.to(textElement, {
+    hoverTl.to(linkElement, {
       x: card.offsetWidth + 20,
       duration: 0.6,
       ease: 'power3.out',
@@ -231,10 +242,10 @@ menuItems.forEach((item) => {
 
     hoverTl = gsap.timeline();
 
-    const textElement = item.querySelector('.menu-nav__text');
+    const linkElement = item.querySelector('.menu-nav__link');
 
     // Reset text position
-    hoverTl.to(textElement, {
+    hoverTl.to(linkElement, {
       x: 0,
       duration: 0.4,
       ease: 'power3.in',
@@ -484,6 +495,136 @@ if (footerCta && footerHand) {
 }
 
 // ===========================
+// ABOUT SECTION HOVER IMAGES
+// ===========================
+const aboutSection = document.getElementById('about-section');
+const hoverReveals = document.querySelectorAll('.hover-reveal');
+const aboutHoverContainer = document.querySelector('.about-hover-container');
+const hoverImgs = document.querySelectorAll('.about-hover-img');
+
+if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
+  // Create blue dot cursor
+  const aboutCursor = document.createElement('div');
+  aboutCursor.className = 'about-cursor';
+  document.body.appendChild(aboutCursor);
+
+  // Use quickTo for smooth cursor following
+  const cursorSetX = gsap.quickTo(aboutCursor, "x", {duration: 0.1, ease: "power3"});
+  const cursorSetY = gsap.quickTo(aboutCursor, "y", {duration: 0.1, ease: "power3"});
+  
+  const xSetters = Array.from(hoverImgs).map(img => gsap.quickTo(img, "left", {duration: 0.5, ease: "power3"}));
+  const ySetters = Array.from(hoverImgs).map(img => gsap.quickTo(img, "top", {duration: 0.5, ease: "power3"}));
+  
+  let isHoveringAbout = false;
+
+  aboutSection.addEventListener('mousemove', (e) => {
+    cursorSetX(e.clientX);
+    cursorSetY(e.clientY);
+    
+    if (isHoveringAbout) {
+      xSetters.forEach(setX => setX(e.clientX));
+      ySetters.forEach(setY => setY(e.clientY));
+    }
+  });
+
+  aboutSection.addEventListener('mouseenter', () => {
+    gsap.to(aboutCursor, {opacity: 1, duration: 0.2});
+  });
+
+  aboutSection.addEventListener('mouseleave', () => {
+    gsap.to(aboutCursor, {opacity: 0, duration: 0.2});
+  });
+
+  hoverReveals.forEach(el => {
+    el.addEventListener('mouseenter', (e) => {
+      isHoveringAbout = true;
+      gsap.set(aboutHoverContainer, { visibility: 'visible' });
+      
+      const imgs = el.dataset.imgs.split(',');
+      
+      // Update image sources and animate them in
+      hoverImgs.forEach((img, i) => {
+        img.src = imgs[i] ? `./${imgs[i]}` : `./${imgs[0]}`;
+        
+        // Random rotations for the stacked effect
+        const rotations = [-12, 6, 14];
+        
+        gsap.killTweensOf(img);
+        
+        // Jump image instantly to cursor position before animating
+        gsap.set(img, { left: e.clientX, top: e.clientY });
+        
+        gsap.fromTo(img, 
+          { 
+            opacity: 0, 
+            scale: 0.5, 
+            rotation: 0 
+          },
+          { 
+            opacity: 1, 
+            scale: 1, 
+            rotation: rotations[i],
+            duration: 0.6, 
+            delay: i * 0.05, 
+            ease: 'back.out(1.5)' 
+          }
+        );
+      });
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      isHoveringAbout = false;
+      hoverImgs.forEach((img) => {
+        gsap.to(img, {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.4,
+          ease: 'power2.in'
+        });
+      });
+      // Hide container after animation
+      gsap.delayedCall(0.4, () => {
+        if (!isHoveringAbout) gsap.set(aboutHoverContainer, { visibility: 'hidden' });
+      });
+    });
+  });
+}
+
+// ===========================
+// APPROACH SECTION CURSOR
+// ===========================
+const approachSection = document.getElementById('approach-section');
+if (approachSection) {
+  const approachCursor = document.createElement('div');
+  approachCursor.className = 'about-cursor'; // Reuse blue dot styling
+  document.body.appendChild(approachCursor);
+
+  const approachCursorSetX = gsap.quickTo(approachCursor, "x", {duration: 0.1, ease: "power3"});
+  const approachCursorSetY = gsap.quickTo(approachCursor, "y", {duration: 0.1, ease: "power3"});
+
+  approachSection.addEventListener('mousemove', (e) => {
+    approachCursorSetX(e.clientX);
+    approachCursorSetY(e.clientY);
+  });
+
+  approachSection.addEventListener('mouseenter', () => {
+    gsap.to(approachCursor, {opacity: 1, duration: 0.2});
+  });
+
+  approachSection.addEventListener('mouseleave', () => {
+    gsap.to(approachCursor, {opacity: 0, duration: 0.2});
+  });
+  
+  // Interactive pills
+  const pills = approachSection.querySelectorAll('.interest-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pill.classList.toggle('active');
+    });
+  });
+}
+
+// ===========================
 // BACK TO TOP
 // ===========================
 const backToTop = document.getElementById('back-to-top');
@@ -493,3 +634,30 @@ if (backToTop) {
     lenis.scrollTo(0, { duration: 1.5 });
   });
 }
+
+// ===========================
+// BUTTON TEXT REVEAL HOVER
+// ===========================
+const buttons = document.querySelectorAll('.liquid-glass, .project-btn, .footer-pill, .back-to-top, .menu-footer__link');
+
+buttons.forEach(btn => {
+  btn.classList.add('reveal-btn');
+  const content = btn.innerHTML;
+  btn.innerHTML = '';
+  
+  const wrapper = document.createElement('span');
+  wrapper.className = 'reveal-wrapper';
+  
+  const original = document.createElement('span');
+  original.className = 'reveal-text';
+  original.innerHTML = content;
+  
+  const clone = document.createElement('span');
+  clone.className = 'reveal-text reveal-clone';
+  clone.innerHTML = content;
+  clone.setAttribute('aria-hidden', 'true'); // Accessibility
+  
+  wrapper.appendChild(original);
+  wrapper.appendChild(clone);
+  btn.appendChild(wrapper);
+});
