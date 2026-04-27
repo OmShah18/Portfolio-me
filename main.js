@@ -518,12 +518,17 @@ if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
   let isHoveringAbout = false;
 
   aboutSection.addEventListener('mousemove', (e) => {
+    const rect = aboutSection.getBoundingClientRect();
+    
+    // Clamp the Y coordinate so images and custom cursor stay within the about section's vertical bounds
+    const clampedY = Math.max(rect.top, Math.min(e.clientY, rect.bottom));
+
     cursorSetX(e.clientX);
-    cursorSetY(e.clientY);
+    cursorSetY(clampedY);
     
     if (isHoveringAbout) {
       xSetters.forEach(setX => setX(e.clientX));
-      ySetters.forEach(setY => setY(e.clientY));
+      ySetters.forEach(setY => setY(clampedY));
     }
   });
 
@@ -533,6 +538,20 @@ if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
 
   aboutSection.addEventListener('mouseleave', () => {
     gsap.to(aboutCursor, {opacity: 0, duration: 0.2});
+    
+    // Instantly clean up images when the entire section is left
+    isHoveringAbout = false;
+    hoverImgs.forEach((img) => {
+      gsap.to(img, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.3,
+        ease: 'power2.in'
+      });
+    });
+    gsap.delayedCall(0.3, () => {
+      if (!isHoveringAbout) gsap.set(aboutHoverContainer, { visibility: 'hidden' });
+    });
   });
 
   hoverReveals.forEach(el => {
