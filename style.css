@@ -427,11 +427,6 @@ img {
   text-align: center;
   position: relative;
   overflow: hidden;
-  cursor: none;
-}
-
-.about-section * {
-  cursor: none !important;
 }
 
 .about-section__top {
@@ -495,19 +490,7 @@ img {
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-.about-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 18px;
-  height: 18px;
-  background-color: #0022ff;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 101;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-}
+
 
 /* ===========================
    SERVICES SECTION
@@ -534,11 +517,14 @@ img {
 }
 
 .services-header__title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  transform: scaleY(1.3);
+  transform-origin: top left;
 }
 
 .services-header__desc {
@@ -916,16 +902,12 @@ img {
   color: #111;
   position: relative;
   overflow: hidden;
-  cursor: none;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.approach-section * {
-  cursor: none !important;
-}
 
 .approach-container {
   max-width: 1400px;

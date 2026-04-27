@@ -540,15 +540,6 @@ const aboutHoverContainer = document.querySelector('.about-hover-container');
 const hoverImgs = document.querySelectorAll('.about-hover-img');
 
 if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
-  // Create blue dot cursor
-  const aboutCursor = document.createElement('div');
-  aboutCursor.className = 'about-cursor';
-  document.body.appendChild(aboutCursor);
-
-  // Use quickTo for smooth cursor following
-  const cursorSetX = gsap.quickTo(aboutCursor, "x", {duration: 0.1, ease: "power3"});
-  const cursorSetY = gsap.quickTo(aboutCursor, "y", {duration: 0.1, ease: "power3"});
-  
   const xSetters = Array.from(hoverImgs).map(img => gsap.quickTo(img, "left", {duration: 0.5, ease: "power3"}));
   const ySetters = Array.from(hoverImgs).map(img => gsap.quickTo(img, "top", {duration: 0.5, ease: "power3"}));
   
@@ -556,12 +547,7 @@ if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
 
   aboutSection.addEventListener('mousemove', (e) => {
     const rect = aboutSection.getBoundingClientRect();
-    
-    // Clamp the Y coordinate so images and custom cursor stay within the about section's vertical bounds
     const clampedY = Math.max(rect.top, Math.min(e.clientY, rect.bottom));
-
-    cursorSetX(e.clientX);
-    cursorSetY(clampedY);
     
     if (isHoveringAbout) {
       xSetters.forEach(setX => setX(e.clientX));
@@ -569,14 +555,8 @@ if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
     }
   });
 
-  aboutSection.addEventListener('mouseenter', () => {
-    gsap.to(aboutCursor, {opacity: 1, duration: 0.2});
-  });
-
   aboutSection.addEventListener('mouseleave', () => {
-    gsap.to(aboutCursor, {opacity: 0, duration: 0.2});
-    
-    // Instantly clean up images when the entire section is left
+    // Clean up images when the entire section is left
     isHoveringAbout = false;
     hoverImgs.forEach((img) => {
       gsap.to(img, {
@@ -647,30 +627,10 @@ if (aboutSection && hoverReveals.length > 0 && aboutHoverContainer) {
 }
 
 // ===========================
-// APPROACH SECTION CURSOR
+// APPROACH SECTION
 // ===========================
 const approachSection = document.getElementById('approach-section');
 if (approachSection) {
-  const approachCursor = document.createElement('div');
-  approachCursor.className = 'about-cursor'; // Reuse blue dot styling
-  document.body.appendChild(approachCursor);
-
-  const approachCursorSetX = gsap.quickTo(approachCursor, "x", {duration: 0.1, ease: "power3"});
-  const approachCursorSetY = gsap.quickTo(approachCursor, "y", {duration: 0.1, ease: "power3"});
-
-  approachSection.addEventListener('mousemove', (e) => {
-    approachCursorSetX(e.clientX);
-    approachCursorSetY(e.clientY);
-  });
-
-  approachSection.addEventListener('mouseenter', () => {
-    gsap.to(approachCursor, {opacity: 1, duration: 0.2});
-  });
-
-  approachSection.addEventListener('mouseleave', () => {
-    gsap.to(approachCursor, {opacity: 0, duration: 0.2});
-  });
-  
   // Interactive pills
   const pills = approachSection.querySelectorAll('.interest-pill');
   pills.forEach(pill => {
