@@ -382,7 +382,6 @@ projectCards.forEach((card, index) => {
 
   gsap.to(card, {
     scale: 0.95,
-    opacity: 0.6,
     transformOrigin: 'top center',
     scrollTrigger: {
       trigger: card,
