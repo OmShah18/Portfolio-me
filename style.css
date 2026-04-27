@@ -979,6 +979,12 @@ img {
   padding: 0;
   resize: none;
   line-height: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.form-row input::-webkit-scrollbar, .form-row textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .form-row input::placeholder, .form-row textarea::placeholder {
