@@ -518,13 +518,11 @@ img {
 
 .services-header__title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 10vw, 9rem);
+  font-size: clamp(3.5rem, 8vw, 9rem);
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 0.9;
+  line-height: 0.95;
   text-transform: uppercase;
-  transform: scaleY(1.3);
-  transform-origin: top left;
 }
 
 .services-header__desc {
