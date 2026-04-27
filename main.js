@@ -92,13 +92,13 @@ function createMenuTimeline() {
 function animateToggleToClose() {
   gsap.to(topLine, {
     rotation: 45,
-    y: 9,
+    y: 7,
     duration: 0.4,
     ease: 'power2.inOut',
   });
   gsap.to(bottomLine, {
     rotation: -45,
-    y: -9,
+    y: -7,
     duration: 0.4,
     ease: 'power2.inOut',
   });
