@@ -1302,16 +1302,17 @@ img {
 
   /* Archives — refined mobile 3D grid */
   .archives-3d-wrapper {
-    height: 60vh;
+    height: 70vh;
   }
   .archives-3d-container {
-    width: 160vw;
-    height: 130vh;
+    width: 250vw;
+    height: 200vh;
   }
   .archives-3d-grid {
     gap: 0.75rem;
-    transform: rotateX(50deg) rotateY(0deg) rotateZ(38deg);
-    width: 90%;
+    transform: rotateX(45deg) rotateY(0deg) rotateZ(30deg);
+    width: 100%;
+    height: 100%;
   }
   .archives-col {
     gap: 0.75rem;
@@ -1455,16 +1456,17 @@ img {
 
   /* Archives — small mobile */
   .archives-3d-wrapper {
-    height: 50vh;
+    height: 60vh;
   }
   .archives-3d-container {
-    width: 170vw;
-    height: 140vh;
+    width: 300vw;
+    height: 250vh;
   }
   .archives-3d-grid {
     gap: 0.4rem;
-    transform: rotateX(50deg) rotateY(0deg) rotateZ(35deg);
-    width: 95%;
+    transform: rotateX(45deg) rotateY(0deg) rotateZ(28deg);
+    width: 100%;
+    height: 100%;
   }
   .archives-col {
     gap: 0.4rem;
