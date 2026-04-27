@@ -831,6 +831,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 1200px;
 }
 
 .archives-3d-container {
@@ -839,6 +840,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform-style: preserve-3d;
 }
 
 .archives-3d-grid {
@@ -846,7 +848,7 @@ img {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   transform: rotateX(45deg) rotateY(0deg) rotateZ(45deg);
-  transform-origin: center;
+  transform-origin: center center;
   width: 80%;
   height: 100%;
 }
@@ -1303,22 +1305,33 @@ img {
   /* Archives — refined mobile 3D grid */
   .archives-3d-wrapper {
     height: 70vh;
+    perspective: 800px;
   }
   .archives-3d-container {
-    width: 250vw;
-    height: 200vh;
-  }
-  .archives-3d-grid {
-    gap: 0.75rem;
-    transform: rotateX(45deg) rotateY(0deg) rotateZ(30deg);
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .archives-3d-grid {
+    gap: 0.6rem;
+    transform: rotateX(45deg) rotateZ(30deg) scale(2.5);
+    transform-origin: center center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50%;
+    margin-left: -50%;
   }
   .archives-col {
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
   .archives-card {
-    border-radius: 8px;
+    border-radius: 6px;
   }
   .archives-marquee span {
     font-size: clamp(2rem, 7vw, 3rem);
@@ -1458,21 +1471,15 @@ img {
   .archives-3d-wrapper {
     height: 60vh;
   }
-  .archives-3d-container {
-    width: 300vw;
-    height: 250vh;
-  }
   .archives-3d-grid {
     gap: 0.4rem;
-    transform: rotateX(45deg) rotateY(0deg) rotateZ(28deg);
-    width: 100%;
-    height: 100%;
+    transform: rotateX(45deg) rotateZ(28deg) scale(3);
   }
   .archives-col {
     gap: 0.4rem;
   }
   .archives-card {
-    border-radius: 6px;
+    border-radius: 5px;
   }
   .archives-marquee span {
     font-size: clamp(1.6rem, 7vw, 2.5rem);
