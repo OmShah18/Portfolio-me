@@ -67,6 +67,12 @@ function createMenuTimeline() {
     ease: 'power4.inOut',
   });
 
+  // Hide the logo when menu opens
+  const logo = document.querySelector('.velorah-nav__logo');
+  if (logo) {
+    tl.to(logo, { opacity: 0, pointerEvents: 'none', duration: 0.4 }, 0);
+  }
+
   // 2. Stagger-animate menu text items from below
   tl.from(
     menuTexts,

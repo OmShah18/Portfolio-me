@@ -136,6 +136,9 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative;
+  z-index: 50; /* Ensure it's above hover cards */
+  padding-top: 2rem;
 }
 
 .menu-footer__links {
