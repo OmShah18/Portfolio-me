@@ -369,23 +369,73 @@ if (servicesList) {
 // STACKING CARDS ON SCROLL
 // ===========================
 const projectCards = gsap.utils.toArray('.project-card');
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-projectCards.forEach((card, index) => {
-  if (index === projectCards.length - 1) return;
+if (!isMobile) {
+  // Desktop: sticky stacking effect
+  projectCards.forEach((card, index) => {
+    if (index === projectCards.length - 1) return;
 
-  gsap.to(card, {
-    scale: 0.95,
-    opacity: 0.6,
-    transformOrigin: 'top center',
+    gsap.to(card, {
+      scale: 0.95,
+      opacity: 0.6,
+      transformOrigin: 'top center',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 10%',
+        endTrigger: projectCards[index + 1],
+        end: 'top 10%',
+        scrub: true,
+      }
+    });
+  });
+} else {
+  // Mobile: fade-in cards on scroll
+  projectCards.forEach((card) => {
+    gsap.from(card, {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+}
+
+// Scroll-triggered section reveals
+const aboutSec = document.querySelector('.about-section__text');
+if (aboutSec) {
+  gsap.from(aboutSec, {
+    y: 80,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
     scrollTrigger: {
-      trigger: card,
-      start: 'top 10%', // Match the sticky top position
-      endTrigger: projectCards[index + 1],
-      end: 'top 10%', // When the next card hits the top
-      scrub: true,
+      trigger: aboutSec,
+      start: 'top 80%',
+      toggleActions: 'play none none none',
     }
   });
-});
+}
+
+const servicesTitle = document.querySelector('.services-header__title');
+if (servicesTitle) {
+  gsap.from(servicesTitle, {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: servicesTitle,
+      start: 'top 85%',
+      toggleActions: 'play none none none',
+    }
+  });
+}
 
 // ===========================
 // EXPLORE ARCHIVES 3D MARQUEE

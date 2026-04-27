@@ -17,6 +17,13 @@ body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 /* ===========================
@@ -404,8 +411,8 @@ body {
    ABOUT SECTION
    =========================== */
 .about-section {
-  padding: 10rem 5vw;
-  background-color: #e5e5e5;
+  padding: clamp(5rem, 12vh, 10rem) 5vw;
+  background-color: #e8e8e8;
   color: #111;
   text-align: center;
   position: relative;
@@ -652,6 +659,7 @@ body {
   margin-bottom: 10vh;
   box-shadow: 0 -10px 40px rgba(0,0,0,0.4);
   will-change: transform;
+  transition: box-shadow 0.4s ease;
 }
 
 .project-card:last-child {
@@ -1251,76 +1259,117 @@ body {
     display: none;
   }
 
-  /* Projects */
+  /* Projects — stacked cards on mobile */
   .projects-section {
-    padding: 6vh 4vw 10vh;
+    padding: 4vh 4vw 6vh;
   }
   .project-card {
     position: relative;
     top: unset;
     height: auto;
     flex-direction: column;
-    border-radius: 14px;
-    margin-bottom: 5vh;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    border-radius: 16px;
+    margin-bottom: 4vh;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   }
   .project-card__left {
     width: 100%;
-    padding: 6vw 5vw 4vw;
+    padding: 7vw 6vw 5vw;
   }
   .project-card__right {
     width: 100%;
-    padding: 0 5vw 5vw;
+    padding: 0 6vw 6vw;
     background-color: #ffffff;
   }
   .project-card__image {
-    height: 220px;
+    height: 200px;
+    border-radius: 8px;
   }
   .project-card__title h2 {
-    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
     margin-bottom: 1rem;
+    transform: scaleY(1.2);
   }
   .project-card__tags {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
   .project-card__bottom p {
     font-size: 0.9rem;
     max-width: 100%;
     margin-bottom: 1.25rem;
+    line-height: 1.6;
   }
 
-  /* Archives */
+  /* Archives — refined mobile 3D grid */
   .archives-3d-wrapper {
-    height: 70vh;
+    height: 60vh;
   }
   .archives-3d-container {
-    width: 140vw;
-    height: 120vh;
+    width: 160vw;
+    height: 130vh;
   }
   .archives-3d-grid {
-    gap: 1rem;
-    transform: rotateX(45deg) rotateY(0deg) rotateZ(35deg);
+    gap: 0.75rem;
+    transform: rotateX(50deg) rotateY(0deg) rotateZ(38deg);
+    width: 90%;
   }
   .archives-col {
-    gap: 1rem;
+    gap: 0.75rem;
+  }
+  .archives-card {
+    border-radius: 8px;
   }
   .archives-marquee span {
-    font-size: clamp(2.2rem, 8vw, 3rem);
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  /* About section */
+  .about-section {
+    padding: 4rem 4vw;
+  }
+  .about-section__top {
+    margin-bottom: 2.5rem;
+    font-size: 0.65rem;
+  }
+  .about-section__text {
+    font-size: clamp(2.2rem, 9vw, 5rem);
+    line-height: 1;
+  }
+  .hover-reveal::after {
+    height: 2px;
+  }
+  .about-hover-container {
+    display: none;
   }
 
   /* Approach */
+  .approach-section {
+    padding: 6vh 5vw;
+    min-height: auto;
+  }
   .form-row {
     flex-direction: column;
     gap: 0.5rem;
   }
   .form-row label {
     padding-top: 0;
+    font-size: 0.65rem;
+  }
+  .form-row input, .form-row textarea {
+    font-size: clamp(1.8rem, 7vw, 3.5rem);
   }
   .approach-title {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
+    font-size: clamp(3rem, 14vw, 6rem);
   }
   .approach-title-img {
     border-radius: 4px;
+    width: clamp(60px, 20vw, 120px);
+    height: clamp(40px, 14vw, 80px);
+  }
+  .interest-pill {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    padding: 0.3em 0.6em;
   }
 
   /* Footer */
@@ -1404,23 +1453,35 @@ body {
     font-size: clamp(2rem, 10vw, 3.5rem);
   }
 
-  /* Archives */
+  /* Archives — small mobile */
   .archives-3d-wrapper {
-    height: 60vh;
+    height: 50vh;
   }
   .archives-3d-container {
-    width: 130vw;
-    height: 110vh;
+    width: 170vw;
+    height: 140vh;
   }
   .archives-3d-grid {
-    gap: 0.5rem;
-    transform: rotateX(45deg) rotateY(0deg) rotateZ(30deg);
+    gap: 0.4rem;
+    transform: rotateX(50deg) rotateY(0deg) rotateZ(35deg);
+    width: 95%;
   }
   .archives-col {
-    gap: 0.5rem;
+    gap: 0.4rem;
+  }
+  .archives-card {
+    border-radius: 6px;
   }
   .archives-marquee span {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    font-size: clamp(1.6rem, 7vw, 2.5rem);
+  }
+
+  /* Approach — small mobile */
+  .approach-title {
+    font-size: clamp(2.5rem, 15vw, 4rem);
+  }
+  .form-row input, .form-row textarea {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
   }
 
   /* Footer */
