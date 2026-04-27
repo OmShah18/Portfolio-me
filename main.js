@@ -726,6 +726,7 @@ buttons.forEach(btn => {
   clone.innerHTML = content;
   clone.setAttribute('aria-hidden', 'true'); // Accessibility
   
+  wrapper.appendChild(original);
   wrapper.appendChild(clone);
   btn.appendChild(wrapper);
 });
