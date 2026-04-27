@@ -726,7 +726,17 @@ buttons.forEach(btn => {
   clone.innerHTML = content;
   clone.setAttribute('aria-hidden', 'true'); // Accessibility
   
-  wrapper.appendChild(original);
   wrapper.appendChild(clone);
   btn.appendChild(wrapper);
+});
+
+// ===========================
+// AUTO-EXPAND TEXTAREA
+// ===========================
+const textareas = document.querySelectorAll('textarea');
+textareas.forEach(textarea => {
+  textarea.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+  });
 });
