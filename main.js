@@ -451,9 +451,9 @@ if (archivesGrid) {
   const images = [
     './service_art.png',
     './service_branding.png',
-    './menu_work.png',
-    './menu_services.png',
-    './menu_approach.png',
+    './images/menu/work.jpeg',
+    './images/menu/sercvices.jpeg',
+    './images/menu/approach.jpeg',
     './guy_presenting.png',
     'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=800&auto=format&fit=crop',

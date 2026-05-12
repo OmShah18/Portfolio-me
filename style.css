@@ -273,7 +273,6 @@ img {
   z-index: 0;
   pointer-events: none;
   opacity: 0.15;
-  filter: grayscale(100%);
 }
 
 .velorah-nav {
