@@ -697,12 +697,24 @@ const themeIcon = document.getElementById('theme-toggle-icon');
 const themeText = document.getElementById('theme-toggle-text');
 const heroVideo = document.getElementById('hero-video');
 
+// Initialize theme from localStorage
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'light') {
+  document.documentElement.classList.add('light-mode');
+  if (themeIcon) themeIcon.textContent = '🌙';
+  if (themeText) themeText.textContent = 'NIGHT MODE';
+  if (heroVideo && heroVideo.dataset.lightSrc) {
+    heroVideo.src = heroVideo.dataset.lightSrc;
+  }
+}
+
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
+    document.documentElement.classList.toggle('light-mode');
+    const isLight = document.documentElement.classList.contains('light-mode');
     
     if (isLight) {
+      localStorage.setItem('theme', 'light');
       themeIcon.textContent = '🌙';
       themeText.textContent = 'NIGHT MODE';
       if (heroVideo && heroVideo.dataset.lightSrc) {
@@ -710,6 +722,7 @@ if (themeToggle) {
         heroVideo.play();
       }
     } else {
+      localStorage.setItem('theme', 'dark');
       themeIcon.textContent = '☀️';
       themeText.textContent = 'LIGHT MODE';
       if (heroVideo && heroVideo.dataset.darkSrc) {
