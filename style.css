@@ -272,7 +272,7 @@ img {
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.15;
+  opacity: 1;
 }
 
 .velorah-nav {
