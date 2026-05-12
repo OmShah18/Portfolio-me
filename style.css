@@ -1535,3 +1535,128 @@ img {
 .reveal-btn:hover .reveal-text {
   transform: translateY(-100%);
 }
+
+/* ===========================
+   THEME TOGGLE BUTTON
+   =========================== */
+.theme-toggle {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  color: #EDEDED;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle__icon {
+  font-size: 1rem;
+}
+
+/* LIGHT MODE */
+.light-mode {
+  --bg-color: #EDEDED;
+  --text-color: #0A0A0A;
+  --menu-bg: #EDEDED;
+  --menu-text: #0A0A0A;
+}
+
+.light-mode .velorah-hero {
+  --background: #EDEDED;
+  --foreground: #0A0A0A;
+  --muted-foreground: #555555;
+}
+
+.light-mode .about-section {
+  background-color: #DDDDDD;
+  color: #0A0A0A;
+}
+
+.light-mode .about-section__top {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.light-mode .hover-reveal::after {
+  background-color: #0A0A0A;
+}
+
+.light-mode .services-section {
+  background-color: #EDEDED;
+  color: #0A0A0A;
+}
+
+.light-mode .services-item__text {
+  color: #0A0A0A;
+}
+
+.light-mode .projects-section {
+  background-color: #EDEDED;
+}
+
+.light-mode .project-card {
+  background-color: #EDEDED;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+}
+
+.light-mode .project-card__left {
+  background-color: #EDEDED;
+  color: #0A0A0A;
+}
+
+.light-mode .project-card__right {
+  background-color: #DDDDDD;
+}
+
+.light-mode .project-card__tags .tag {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.light-mode .project-card__bottom p {
+  color: #555555;
+}
+
+.light-mode .project-btn {
+  color: #0A0A0A;
+  border-color: #0A0A0A;
+}
+
+.light-mode .project-btn .arrow {
+  background: #0A0A0A;
+  color: #EDEDED;
+}
+
+.light-mode .archives-section {
+  background-color: #EDEDED;
+  color: #0A0A0A;
+}
+
+.light-mode .archives-marquee-wrapper {
+  background-color: #EDEDED;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .theme-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #0A0A0A;
+}
+
+.light-mode .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.2);
+}

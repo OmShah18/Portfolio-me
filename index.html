@@ -121,8 +121,10 @@
     <div id="smooth-content">
 
       <section class="velorah-hero">
-        <video class="velorah-hero__video" autoplay loop muted playsinline preload="metadata"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4">
+        <video class="velorah-hero__video" id="hero-video" autoplay loop muted playsinline preload="metadata"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+          data-dark-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+          data-light-src="./hero-4k.mp4">
         </video>
 
         <nav class="velorah-nav">
@@ -140,6 +142,12 @@
             Begin Journey
           </button>
         </div>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle animate-fade-rise-delay-2" aria-label="Toggle Theme">
+          <span class="theme-toggle__icon" id="theme-toggle-icon">☀️</span> 
+          <span class="theme-toggle__text" id="theme-toggle-text">LIGHT MODE</span>
+        </button>
       </section>
 
       <!-- ABOUT SECTION -->

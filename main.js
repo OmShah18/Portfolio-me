@@ -688,3 +688,34 @@ textareas.forEach(textarea => {
     this.style.height = (this.scrollHeight) + 'px';
   });
 });
+
+// ===========================
+// THEME TOGGLE
+// ===========================
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-toggle-icon');
+const themeText = document.getElementById('theme-toggle-text');
+const heroVideo = document.getElementById('hero-video');
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    
+    if (isLight) {
+      themeIcon.textContent = '🌙';
+      themeText.textContent = 'NIGHT MODE';
+      if (heroVideo && heroVideo.dataset.lightSrc) {
+        heroVideo.src = heroVideo.dataset.lightSrc;
+        heroVideo.play();
+      }
+    } else {
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'LIGHT MODE';
+      if (heroVideo && heroVideo.dataset.darkSrc) {
+        heroVideo.src = heroVideo.dataset.darkSrc;
+        heroVideo.play();
+      }
+    }
+  });
+}
