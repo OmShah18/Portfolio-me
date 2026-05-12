@@ -1,8 +1,8 @@
 :root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --menu-bg: #ffffff;
-  --menu-text: #000000;
+  --bg-color: #0A0A0A;
+  --text-color: #EDEDED;
+  --menu-bg: #0A0A0A;
+  --menu-text: #EDEDED;
 }
 
 * {
@@ -64,7 +64,7 @@ img {
   display: block;
   width: 100%;
   height: 1.5px;
-  background-color: #fff;
+  background-color: #EDEDED;
   border-radius: 1px;
   transform-origin: center center;
   transition: none;
@@ -76,7 +76,7 @@ img {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
+  color: #EDEDED;
   pointer-events: none;
   user-select: none;
 }
@@ -127,7 +127,7 @@ img {
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.15em;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
 }
 
@@ -250,9 +250,9 @@ img {
    =========================== */
 
 .velorah-hero {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(0, 0%, 0%);
-  --muted-foreground: hsl(240, 4%, 30%);
+  --background: #0A0A0A;
+  --foreground: #EDEDED;
+  --muted-foreground: #888888;
   position: relative;
   min-height: 100vh;
   width: 100%;
@@ -293,7 +293,7 @@ img {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
+  color: #EDEDED;
   position: fixed;
   top: 1.75rem;
   left: 2rem;
@@ -421,8 +421,8 @@ img {
    =========================== */
 .about-section {
   padding: clamp(5rem, 12vh, 10rem) 5vw;
-  background-color: #e8e8e8;
-  color: #111;
+  background-color: #111111;
+  color: #EDEDED;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -435,7 +435,7 @@ img {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 4rem;
-  color: rgba(17, 17, 17, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .about-section__text {
@@ -459,7 +459,7 @@ img {
   bottom: 0.05em;
   width: 100%;
   height: clamp(2px, 0.4vw, 5px);
-  background-color: #111;
+  background-color: #EDEDED;
 }
 
 .about-hover-container {
@@ -575,7 +575,7 @@ img {
   display: inline-block;
   transform: scaleY(1.4);
   transform-origin: bottom;
-  color: #1a1a1a;
+  color: #EDEDED;
   transition: opacity 0.4s ease, color 0.4s ease;
   will-change: opacity;
 }
@@ -632,7 +632,7 @@ img {
    =========================== */
 
 .projects-section {
-  background-color: #ffffff;
+  background-color: #0A0A0A;
   padding: 10vh 5vw 20vh;
   position: relative;
 }
@@ -653,7 +653,7 @@ img {
   box-shadow: 0 -10px 40px rgba(0,0,0,0.4);
   will-change: transform;
   transition: box-shadow 0.4s ease;
-  background-color: #ffffff;
+  background-color: #0A0A0A;
 }
 
 .project-card:last-child {
@@ -662,8 +662,8 @@ img {
 
 .project-card__left {
   width: 50%;
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #0A0A0A;
+  color: #EDEDED;
   padding: 4vw;
   display: flex;
   flex-direction: column;
@@ -674,7 +674,7 @@ img {
 
 .project-card__right {
   width: 50%;
-  background-color: #f7f7f7;
+  background-color: #1A1A1A;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -719,7 +719,7 @@ img {
   font-size: 0.65rem;
   font-weight: 500;
   text-transform: uppercase;
-  border: 1px solid rgba(17, 17, 17, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 50px;
   padding: 0.3rem 0.8rem;
 }
@@ -730,7 +730,7 @@ img {
   line-height: 1.5;
   max-width: 85%;
   margin-bottom: 2rem;
-  color: #333;
+  color: #AAAAAA;
 }
 
 .project-btn {
@@ -740,8 +740,8 @@ img {
   font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
-  color: #111111;
-  border: 1px solid #111111;
+  color: #EDEDED;
+  border: 1px solid #EDEDED;
   border-radius: 50px;
   padding: 0.4rem 0.5rem 0.4rem 1rem;
   transition: all 0.3s ease;
@@ -749,8 +749,8 @@ img {
 
 .project-btn .arrow {
   margin-left: 0.8rem;
-  background: #111;
-  color: #fff;
+  background: #EDEDED;
+  color: #111111;
   border-radius: 50%;
   width: 22px;
   height: 22px;
@@ -762,12 +762,12 @@ img {
 }
 
 .project-btn:hover {
-  background: #111;
-  color: #fff;
+  background: #EDEDED;
+  color: #111111;
 }
 .project-btn:hover .arrow {
-  background: #fff;
-  color: #111;
+  background: #111111;
+  color: #EDEDED;
 }
 
 /* ===========================
@@ -775,8 +775,8 @@ img {
    =========================== */
 
 .archives-section {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #0A0A0A;
+  color: #EDEDED;
   position: relative;
   z-index: 20;
   overflow: hidden;
@@ -786,9 +786,9 @@ img {
 
 /* Horizontal Marquee */
 .archives-marquee-wrapper {
-  background-color: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #0A0A0A;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   padding: 1rem 0;
   white-space: nowrap;
@@ -809,7 +809,7 @@ img {
   margin-right: 2rem;
   display: inline-flex;
   align-items: center;
-  color: #000000;
+  color: #EDEDED;
 }
 
 .archives-marquee span .starburst {
@@ -879,7 +879,7 @@ img {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 12px;
-  background-color: #f5f5f5;
+  background-color: #1A1A1A;
   overflow: hidden;
 }
 
@@ -895,8 +895,8 @@ img {
    =========================== */
 .approach-section {
   padding: 12vh 5vw;
-  background-color: #e5e5e5;
-  color: #111;
+  background-color: #111111;
+  color: #EDEDED;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
@@ -950,7 +950,7 @@ img {
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #111;
+  color: #EDEDED;
   width: 120px;
   flex-shrink: 0;
   padding-top: 1rem;
@@ -962,7 +962,7 @@ img {
   border: none;
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2.5rem, 6vw, 6rem);
-  color: #111;
+  color: #EDEDED;
   outline: none;
   padding: 0;
   resize: none;
@@ -1007,7 +1007,7 @@ img {
 }
 
 .interest-pill.active, .interest-pill:hover {
-  color: #111;
+  color: #EDEDED;
   background: rgba(0,0,0,0.15);
 }
 
@@ -1016,13 +1016,13 @@ img {
    =========================== */
 
 .footer-section {
-  background-color: #ffffff;
+  background-color: #0A0A0A;
   padding: 0 1vw 1vw 1vw; /* Gap on bottom/sides */
 }
 
 .footer-inner {
-  background-color: #f7f7f7;
-  color: #000000;
+  background-color: #1A1A1A;
+  color: #EDEDED;
   border-radius: 20px;
   min-height: 85vh;
   display: flex;
@@ -1078,7 +1078,7 @@ img {
   letter-spacing: -0.02em;
   transform: scaleY(1.5);
   transform-origin: center;
-  color: #1a1a1a;
+  color: #EDEDED;
   margin: 0;
 }
 
@@ -1109,7 +1109,7 @@ img {
 }
 
 .footer-email a {
-  color: #111;
+  color: #EDEDED;
   text-decoration: none;
   font-size: 1.8rem;
   font-weight: 400;
@@ -1125,7 +1125,7 @@ img {
 }
 
 .footer-pill {
-  color: #111;
+  color: #EDEDED;
   text-decoration: none;
   border: 1px solid #111;
   border-radius: 50px;
@@ -1135,12 +1135,12 @@ img {
 }
 
 .footer-pill:hover {
-  background-color: #111;
-  color: #fff;
+  background-color: #EDEDED;
+  color: #1A1A1A;
 }
 
 .back-to-top {
-  color: #111;
+  color: #EDEDED;
   text-decoration: none;
   font-weight: 600;
   display: inline-block;
@@ -1284,7 +1284,7 @@ img {
   .project-card__right {
     width: 100%;
     padding: 0 5vw 5vw;
-    background-color: #ffffff;
+    background-color: #0A0A0A;
     flex: 1;
   }
   .project-card__image {
