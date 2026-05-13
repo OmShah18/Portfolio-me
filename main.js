@@ -705,7 +705,6 @@ if (currentTheme === 'light') {
   if (themeText) themeText.textContent = 'NIGHT MODE';
   if (heroVideo && heroVideo.dataset.lightSrc) {
     heroVideo.src = heroVideo.dataset.lightSrc;
-    heroVideo.load();
   }
 }
 
@@ -719,20 +718,16 @@ if (themeToggle) {
       themeIcon.textContent = '🌙';
       themeText.textContent = 'NIGHT MODE';
       if (heroVideo && heroVideo.dataset.lightSrc) {
-        console.log("Switching to light video:", heroVideo.dataset.lightSrc);
         heroVideo.src = heroVideo.dataset.lightSrc;
-        heroVideo.load();
-        heroVideo.play().catch(e => console.warn("Autoplay blocked or failed:", e));
+        heroVideo.play();
       }
     } else {
       localStorage.setItem('theme', 'dark');
       themeIcon.textContent = '☀️';
       themeText.textContent = 'LIGHT MODE';
       if (heroVideo && heroVideo.dataset.darkSrc) {
-        console.log("Switching to dark video:", heroVideo.dataset.darkSrc);
         heroVideo.src = heroVideo.dataset.darkSrc;
-        heroVideo.load();
-        heroVideo.play().catch(e => console.warn("Autoplay blocked or failed:", e));
+        heroVideo.play();
       }
     }
   });
