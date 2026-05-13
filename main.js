@@ -705,6 +705,7 @@ if (currentTheme === 'light') {
   if (themeText) themeText.textContent = 'NIGHT MODE';
   if (heroVideo && heroVideo.dataset.lightSrc) {
     heroVideo.src = heroVideo.dataset.lightSrc;
+    heroVideo.play();
   }
 }
 
