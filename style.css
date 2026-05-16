@@ -1289,13 +1289,13 @@ img {
   }
   .project-card__right {
     width: 100%;
-    padding: 0 5vw 5vw;
+    padding: 0;
     background-color: #0A0A0A;
     flex: 1;
   }
   .project-card__image {
     height: 100%;
-    border-radius: 8px;
+    border-radius: 0;
   }
   .project-card__title h2 {
     font-size: clamp(2rem, 8vw, 4rem);
