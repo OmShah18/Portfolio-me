@@ -449,18 +449,18 @@ if (archivesMarquee) {
 const archivesGrid = document.getElementById('archives-3d-grid');
 if (archivesGrid) {
   const images = [
-    './Images/work/Screenshot 2026-05-13 145508.png',
-    './Images/work/Screenshot 2026-05-13 145548.png',
-    './Images/work/Screenshot 2026-05-13 145833.png',
-    './Images/work/Screenshot 2026-05-13 150326.png',
-    './Images/work/Screenshot 2026-05-16 173201.png',
-    './Images/work/Screenshot 2026-05-13 145508.png',
-    './Images/work/Screenshot 2026-05-13 145548.png',
-    './Images/work/Screenshot 2026-05-13 145833.png',
-    './Images/work/Screenshot 2026-05-13 150326.png',
-    './Images/work/Screenshot 2026-05-16 173201.png',
-    './Images/work/Screenshot 2026-05-13 145508.png',
-    './Images/work/Screenshot 2026-05-13 145548.png'
+    '/Images/work/work-1.png',
+    '/Images/work/work-2.png',
+    '/Images/work/work-3.png',
+    '/Images/work/work-4.png',
+    '/Images/work/work-5.png',
+    '/Images/work/work-1.png',
+    '/Images/work/work-2.png',
+    '/Images/work/work-3.png',
+    '/Images/work/work-4.png',
+    '/Images/work/work-5.png',
+    '/Images/work/work-1.png',
+    '/Images/work/work-2.png'
   ];
 
   const cols = archivesGrid.querySelectorAll('.archives-col');
