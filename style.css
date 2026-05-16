@@ -241,7 +241,7 @@ img {
 .menu-nav__card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -481,7 +481,7 @@ img {
   max-width: 320px;
   min-width: 180px;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   opacity: 0;
   transform: translate(-50%, -50%);
@@ -606,7 +606,7 @@ img {
 .services-item__card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -694,7 +694,7 @@ img {
 .project-card__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .project-card__title h2 {
@@ -886,7 +886,7 @@ img {
 .archives-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -924,7 +924,7 @@ img {
   display: inline-block;
   width: clamp(80px, 18vw, 240px);
   height: clamp(50px, 12vw, 150px);
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   vertical-align: middle;
   margin-right: 2vw;
