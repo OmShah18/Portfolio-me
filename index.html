@@ -21,6 +21,27 @@
 </head>
 
 <body>
+  <!-- =========================== -->
+  <!-- PRELOADER                   -->
+  <!-- =========================== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__mark">
+      <div class="preloader__top">
+        <div class="preloader__fill" id="preloader-fill"></div>
+      </div>
+      <div class="preloader__bottom"></div>
+    </div>
+    <div class="preloader__percent" id="preloader-percent">0</div>
+    <div class="preloader__icons">
+      <div class="preloader__icon" style="padding-bottom: 5px;">...</div>
+      <div class="preloader__icon" id="preloader-theme-toggle" style="cursor: pointer;">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
   <!-- Menu Toggle Button -->
   <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
     <div class="menu-toggle__inner">

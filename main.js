@@ -27,7 +27,49 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+// ===========================
+// PRELOADER
+// ===========================
+const preloader = document.getElementById('preloader');
+const preloaderFill = document.getElementById('preloader-fill');
+const preloaderPercent = document.getElementById('preloader-percent');
 
+if (preloader) {
+  lenis.stop(); // Stop scrolling while preloading
+
+  const tl = gsap.timeline({
+    onComplete: () => {
+      lenis.start();
+      preloader.style.display = 'none'; // Clean up
+    }
+  });
+
+  // Animate the fill height
+  tl.to(preloaderFill, {
+    height: '100%',
+    duration: 2.5,
+    ease: 'power2.inOut',
+  }, 0);
+
+  // Animate the percentage text
+  const counter = { val: 0 };
+  tl.to(counter, {
+    val: 100,
+    duration: 2.5,
+    ease: 'power2.inOut',
+    onUpdate: () => {
+      preloaderPercent.textContent = Math.round(counter.val);
+    }
+  }, 0);
+
+  // Slide preloader up to reveal the page
+  tl.to(preloader, {
+    yPercent: -100,
+    duration: 1.2,
+    ease: 'power4.inOut',
+    delay: 0.2
+  });
+}
 
 // ===========================
 // FULL SCREEN MENU
@@ -696,40 +738,49 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-toggle-icon');
 const themeText = document.getElementById('theme-toggle-text');
 const heroVideo = document.getElementById('hero-video');
+const preloaderThemeToggle = document.getElementById('preloader-theme-toggle');
 
-// Initialize theme from localStorage
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'light') {
-  document.documentElement.classList.add('light-mode');
-  if (themeIcon) themeIcon.textContent = '🌙';
-  if (themeText) themeText.textContent = 'NIGHT MODE';
-  if (heroVideo && heroVideo.dataset.lightSrc) {
-    heroVideo.src = heroVideo.dataset.lightSrc;
-    heroVideo.play();
+const moonSVG = `<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>`;
+const sunSVG = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+function applyTheme(isLight) {
+  if (isLight) {
+    document.documentElement.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+    if (themeIcon) themeIcon.textContent = '🌙';
+    if (themeText) themeText.textContent = 'NIGHT MODE';
+    if (preloaderThemeToggle) preloaderThemeToggle.innerHTML = moonSVG;
+    if (heroVideo && heroVideo.dataset.lightSrc) {
+      heroVideo.src = heroVideo.dataset.lightSrc;
+      heroVideo.play();
+    }
+  } else {
+    document.documentElement.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+    if (themeIcon) themeIcon.textContent = '☀️';
+    if (themeText) themeText.textContent = 'LIGHT MODE';
+    if (preloaderThemeToggle) preloaderThemeToggle.innerHTML = sunSVG;
+    if (heroVideo && heroVideo.dataset.darkSrc) {
+      heroVideo.src = heroVideo.dataset.darkSrc;
+      heroVideo.play();
+    }
   }
 }
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('light-mode');
-    const isLight = document.documentElement.classList.contains('light-mode');
-    
-    if (isLight) {
-      localStorage.setItem('theme', 'light');
-      themeIcon.textContent = '🌙';
-      themeText.textContent = 'NIGHT MODE';
-      if (heroVideo && heroVideo.dataset.lightSrc) {
-        heroVideo.src = heroVideo.dataset.lightSrc;
-        heroVideo.play();
-      }
-    } else {
-      localStorage.setItem('theme', 'dark');
-      themeIcon.textContent = '☀️';
-      themeText.textContent = 'LIGHT MODE';
-      if (heroVideo && heroVideo.dataset.darkSrc) {
-        heroVideo.src = heroVideo.dataset.darkSrc;
-        heroVideo.play();
-      }
-    }
-  });
+// Initialize theme from localStorage
+const currentTheme = localStorage.getItem('theme');
+applyTheme(currentTheme === 'light');
+
+function toggleTheme() {
+  const isLight = !document.documentElement.classList.contains('light-mode');
+  applyTheme(isLight);
 }
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', toggleTheme);
+}
+
+if (preloaderThemeToggle) {
+  preloaderThemeToggle.addEventListener('click', toggleTheme);
+}
+
