@@ -134,13 +134,13 @@ function createMenuTimeline() {
 function animateToggleToClose() {
   gsap.to(topLine, {
     rotation: 45,
-    y: 7,
+    y: 'var(--toggle-y-top)',
     duration: 0.4,
     ease: 'power2.inOut',
   });
   gsap.to(bottomLine, {
     rotation: -45,
-    y: -7,
+    y: 'var(--toggle-y-bottom)',
     duration: 0.4,
     ease: 'power2.inOut',
   });
