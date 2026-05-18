@@ -717,6 +717,7 @@ img {
   align-items: center;
   justify-content: center;
   background-color: #111111;
+  padding: 2rem;
 }
 
 .project-card__image img {
@@ -724,6 +725,8 @@ img {
   height: 100%;
   object-fit: cover;
   background-color: #111111;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-card__title h2 {
@@ -1394,6 +1397,7 @@ img {
   .project-card__image {
     height: 100%;
     border-radius: 0;
+    padding: 1rem;
   }
 
   .project-card__title h2 {
@@ -1603,6 +1607,7 @@ img {
   /* Projects */
   .project-card__image {
     height: 180px;
+    padding: 1rem;
   }
 
   .project-card__title h2 {
@@ -1767,6 +1772,14 @@ img {
 
 .light-mode .project-card__right {
   background-color: #EAE7E0;
+}
+
+.light-mode .project-card__image {
+  background-color: #FFFFFF;
+}
+
+.light-mode .project-card__image img {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .light-mode .project-card__tags .tag {
