@@ -41,6 +41,7 @@ if (preloader) {
     onComplete: () => {
       lenis.start();
       preloader.style.display = 'none'; // Clean up
+      document.body.classList.add('preloader-done');
     }
   });
 
@@ -69,6 +70,8 @@ if (preloader) {
     ease: 'power4.inOut',
     delay: 0.2
   });
+} else {
+  document.body.classList.add('preloader-done');
 }
 
 // ===========================

@@ -427,15 +427,21 @@ img {
   }
 }
 
-.animate-fade-rise {
+.animate-fade-rise,
+.animate-fade-rise-delay,
+.animate-fade-rise-delay-2 {
+  opacity: 0;
+}
+
+.preloader-done .animate-fade-rise {
   animation: fade-rise 0.8s ease-out both;
 }
 
-.animate-fade-rise-delay {
+.preloader-done .animate-fade-rise-delay {
   animation: fade-rise 0.8s ease-out 0.2s both;
 }
 
-.animate-fade-rise-delay-2 {
+.preloader-done .animate-fade-rise-delay-2 {
   animation: fade-rise 0.8s ease-out 0.4s both;
 }
 
