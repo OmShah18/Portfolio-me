@@ -8,7 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
+
+// Force scroll to top on page load
 window.scrollTo(0, 0);
+// Remove hash to prevent browser from natively jumping to a section on load
+if (window.location.hash) {
+  window.history.replaceState(null, null, window.location.pathname + window.location.search);
+}
 
 // ===========================
 // LENIS SMOOTH SCROLL
@@ -40,14 +46,22 @@ const preloader = document.getElementById('preloader');
 const preloaderFill = document.getElementById('preloader-fill');
 const preloaderPercent = document.getElementById('preloader-percent');
 
+// Force Lenis to the top initially
+lenis.scrollTo(0, { immediate: true });
+
 if (preloader) {
   lenis.stop(); // Stop scrolling while preloading
+  document.body.style.overflow = 'hidden'; // Lock native scroll
 
   const tl = gsap.timeline({
     onComplete: () => {
+      window.scrollTo(0, 0);
+      lenis.scrollTo(0, { immediate: true });
       lenis.start();
+      document.body.style.overflow = ''; // Unlock native scroll
       preloader.style.display = 'none'; // Clean up
       document.body.classList.add('preloader-done');
+      ScrollTrigger.refresh();
     }
   });
 
@@ -68,6 +82,12 @@ if (preloader) {
       preloaderPercent.textContent = Math.round(counter.val);
     }
   }, 0);
+
+  // Snap to top right before sliding up
+  tl.call(() => {
+    window.scrollTo(0, 0);
+    lenis.scrollTo(0, { immediate: true });
+  }, null, 2.5);
 
   // Slide preloader up to reveal the page
   tl.to(preloader, {
