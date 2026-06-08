@@ -4,6 +4,7 @@
   --menu-bg: #0A0A0A;
   --menu-text: #EDEDED;
   --frame-color: #000000;
+  --foreground: #EDEDED;
 }
 
 * {
@@ -728,7 +729,8 @@ img {
 
 .project-card__image img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain;
   background-color: #111111;
   border-radius: 12px;
@@ -737,7 +739,7 @@ img {
 
 .project-card__title h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 6vw, 7rem);
+  font-size: clamp(2rem, 4.5vw, 5rem);
   line-height: 0.85;
   letter-spacing: -0.02em;
   margin-bottom: 1.3rem;
@@ -1067,6 +1069,47 @@ img {
   background: rgba(0, 0, 0, 0.15);
 }
 
+.form-row-submit {
+  padding-left: calc(120px + 4rem);
+  border-bottom: none !important;
+}
+
+.submit-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #EDEDED;
+  border: none;
+  border-radius: 8px;
+  padding: 0.25em 1.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  margin-top: 2rem;
+  line-height: 1;
+}
+
+.submit-btn:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #FFFFFF;
+}
+
+.light-mode .submit-btn {
+  background-color: #1C1C1C;
+  color: #F4F4F0;
+}
+
+.light-mode .submit-btn:hover {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .form-row-submit {
+    padding-left: 0;
+  }
+}
+
 /* ===========================
    FOOTER SECTION
    =========================== */
@@ -1238,7 +1281,7 @@ img {
   }
 
   .project-card__title h2 {
-    font-size: clamp(2.5rem, 5vw, 6rem);
+    font-size: clamp(1.8rem, 4vw, 4.5rem);
   }
 
   /* Footer */
@@ -1407,7 +1450,7 @@ img {
   }
 
   .project-card__title h2 {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(1.5rem, 6vw, 3.5rem);
     margin-bottom: 0.75rem;
     transform: scaleY(1.2);
   }
@@ -1617,7 +1660,7 @@ img {
   }
 
   .project-card__title h2 {
-    font-size: clamp(2rem, 10vw, 3.5rem);
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
   }
 
   /* Archives — small mobile */
@@ -1732,6 +1775,7 @@ img {
   --menu-bg: #F4F4F0;
   --menu-text: #1C1C1C;
   --frame-color: #ffffff;
+  --foreground: #1C1C1C;
 }
 
 .light-mode .velorah-hero {
