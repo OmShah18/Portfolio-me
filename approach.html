@@ -147,18 +147,18 @@
             <img src="/Images/handshake_bw.png" class="approach-title-img" alt="Let's work together"> TOGETHER
           </h1>
 
-          <form class="approach-form">
+          <form class="approach-form" action="mailto:contact@flowiee.com" method="POST" enctype="text/plain">
             <div class="form-row">
               <label>NAME</label>
-              <input type="text" id="form-name" placeholder="CHUCK NORRIS" required>
+              <input type="text" id="form-name" name="name" placeholder="CHUCK NORRIS" required>
             </div>
             <div class="form-row">
               <label>EMAIL</label>
-              <input type="email" id="form-email" placeholder="WALKER@TEXAS-RANGERS.COM" required>
+              <input type="email" id="form-email" name="email" placeholder="WALKER@TEXAS-RANGERS.COM" required>
             </div>
             <div class="form-row">
               <label>PHONE</label>
-              <input type="tel" id="form-phone" placeholder="XX XX XX XX XX">
+              <input type="tel" id="form-phone" name="phone" placeholder="XX XX XX XX XX">
             </div>
             <div class="form-row form-row-interest">
               <label>INTEREST</label>
@@ -172,7 +172,7 @@
             </div>
             <div class="form-row">
               <label>MESSAGE</label>
-              <textarea id="form-message" placeholder="GIVE US A SHORT PROJECT BRIEF, DEADLINE, BUDGET, ETC."
+              <textarea id="form-message" name="message" placeholder="GIVE US A SHORT PROJECT BRIEF, DEADLINE, BUDGET, ETC."
                 required></textarea>
             </div>
             <div class="form-row form-row-submit">
