@@ -713,13 +713,6 @@ if (approachSection) {
   const form = approachSection.querySelector('.approach-form');
   if (form) {
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = form.querySelector('#form-name')?.value || '';
-      const email = form.querySelector('#form-email')?.value || '';
-      const phone = form.querySelector('#form-phone')?.value || '';
-      const message = form.querySelector('#form-message')?.value || '';
-      
       // Get selected interests
       const selectedInterests = [];
       pills.forEach(pill => {
@@ -727,22 +720,25 @@ if (approachSection) {
           selectedInterests.push(pill.textContent.trim());
         }
       });
-      
       const interestsStr = selectedInterests.join(', ');
-      
-      // Construct mailto link
-      const emailTo = 'contact@flowiee.com';
-      const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-      
-      let bodyText = `Name: ${name}\n`;
-      bodyText += `Email: ${email}\n`;
-      if (phone) bodyText += `Phone: ${phone}\n`;
-      if (interestsStr) bodyText += `Interests: ${interestsStr}\n`;
-      bodyText += `\nMessage:\n${message}\n`;
-      
-      const body = encodeURIComponent(bodyText);
-      
-      window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+
+      // Update the hidden interests field so it submits with the form
+      const interestsInput = form.querySelector('#form-interests');
+      if (interestsInput) {
+        interestsInput.value = interestsStr;
+      }
+
+      // Hide all standard form rows
+      const formRows = form.querySelectorAll('.form-row');
+      formRows.forEach(row => {
+        row.style.display = 'none';
+      });
+
+      // Show success message
+      const successMessage = form.querySelector('.form-success-message');
+      if (successMessage) {
+        successMessage.style.display = 'block';
+      }
     });
   }
 }

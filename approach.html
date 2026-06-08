@@ -147,7 +147,10 @@
             <img src="/Images/handshake_bw.png" class="approach-title-img" alt="Let's work together"> TOGETHER
           </h1>
 
-          <form class="approach-form" action="mailto:contact@flowiee.com" method="POST" enctype="text/plain">
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+          <form class="approach-form" action="https://formsubmit.co/contact@flowiee.com" method="POST" target="hidden_iframe">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="interests" id="form-interests">
             <div class="form-row">
               <label>NAME</label>
               <input type="text" id="form-name" name="name" placeholder="CHUCK NORRIS" required>
@@ -177,6 +180,9 @@
             </div>
             <div class="form-row form-row-submit">
               <button type="submit" class="submit-btn">SUBMIT</button>
+            </div>
+            <div class="form-success-message" style="display: none; font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 6vw, 5rem); color: #EDEDED; text-align: center; padding: 6rem 0; text-transform: uppercase;">
+              your response is been sent
             </div>
           </form>
         </div>
