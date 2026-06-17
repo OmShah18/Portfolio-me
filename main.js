@@ -713,6 +713,13 @@ if (approachSection) {
   const form = approachSection.querySelector('.approach-form');
   if (form) {
     form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent default submission
+
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'SENDING...';
+      submitBtn.disabled = true;
+
       // Get selected interests
       const selectedInterests = [];
       pills.forEach(pill => {
@@ -728,17 +735,63 @@ if (approachSection) {
         interestsInput.value = interestsStr;
       }
 
-      // Hide all standard form rows
-      const formRows = form.querySelectorAll('.form-row');
-      formRows.forEach(row => {
-        row.style.display = 'none';
-      });
-
-      // Show success message
-      const successMessage = form.querySelector('.form-success-message');
-      if (successMessage) {
-        successMessage.style.display = 'block';
+      // Hide any previous error message
+      const errorMessage = form.querySelector('.form-error-message');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
       }
+
+      // Prepare form data as a plain object for JSON submission
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      // Submit via AJAX Fetch
+      fetch("https://formsubmit.co/ajax/omshah7928@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          // Hide all standard form rows
+          const formRows = form.querySelectorAll('.form-row');
+          formRows.forEach(row => {
+            row.style.display = 'none';
+          });
+
+          // Show success message
+          const successMessage = form.querySelector('.form-success-message');
+          if (successMessage) {
+            successMessage.style.display = 'block';
+          }
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      })
+      .catch(error => {
+        console.error('Submission error:', error);
+
+        // Restore submit button state
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+
+        // Show error message
+        if (errorMessage) {
+          errorMessage.textContent = 'Submission failed. If this is the first submission, please check omshah7928@gmail.com (and spam folder) for a FormSubmit activation email.';
+          errorMessage.style.display = 'block';
+        } else {
+          alert('Submission failed. Please check omshah7928@gmail.com for FormSubmit activation, or email us directly.');
+        }
+      });
     });
   }
 }
