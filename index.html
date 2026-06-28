@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Om Shah | Digital Designer & Web Developer Portfolio</title>
   <meta name="description"
-    content="Portfolio of Om Shah, a Digital Designer and Web Developer based in Kolhapur. Explore my work in webflow, UI/UX, branding, and interactive experiences." />
+    content="Portfolio of Om Shah, a Digital Designer and Web Developer. Explore my work in webflow, UI/UX, branding, and interactive experiences." />
   <meta name="keywords"
-    content="Om Shah, Digital Designer, Web Developer, Webflow Developer, UI/UX Designer, GSAP Animations, Frontend Developer, Kolhapur, Portfolio" />
+    content="Om Shah, Digital Designer, Web Developer, Webflow Developer, UI/UX Designer, GSAP Animations, Frontend Developer, Portfolio" />
   <meta name="author" content="Om Shah" />
 
   <!-- Open Graph / Facebook -->
@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://omshah.in/" />
   <meta property="og:title" content="Om Shah | Digital Designer & Web Developer Portfolio" />
   <meta property="og:description"
-    content="Portfolio of Om Shah, a Digital Designer and Web Developer based in Kolhapur. Explore my work in webflow, UI/UX, branding, and interactive experiences." />
+    content="Portfolio of Om Shah, a Digital Designer and Web Developer. Explore my work in webflow, UI/UX, branding, and interactive experiences." />
   <meta property="og:image" content="https://omshah.in/Images/og-image.jpg" />
 
   <!-- Twitter -->
@@ -24,7 +24,7 @@
   <meta property="twitter:url" content="https://omshah.in/" />
   <meta property="twitter:title" content="Om Shah | Digital Designer & Web Developer Portfolio" />
   <meta property="twitter:description"
-    content="Portfolio of Om Shah, a Digital Designer and Web Developer based in Kolhapur. Explore my work in webflow, UI/UX, branding, and interactive experiences." />
+    content="Portfolio of Om Shah, a Digital Designer and Web Developer. Explore my work in webflow, UI/UX, branding, and interactive experiences." />
   <meta property="twitter:image" content="https://omshah.in/Images/og-image.jpg" />
 
   <link rel="canonical" href="https://omshah.in/" />
@@ -39,6 +39,18 @@
     if (localStorage.getItem('theme') === 'light') {
       document.documentElement.classList.add('light-mode');
     }
+    
+    // Fallback if main.js fails to load (e.g., due to bare imports in Live Server)
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (!document.body.classList.contains('preloader-done')) {
+          const preloader = document.getElementById('preloader');
+          if (preloader) {
+            preloader.innerHTML = '<div style="color: white; text-align: center; padding: 20px;"><h2>Configuration Error</h2><p>The application failed to load. If you are using Live Server or opening the file directly, please use <code>npm run dev</code> instead, as this is a Vite project.</p></div>';
+          }
+        }
+      }, 4000); // Wait slightly longer than the GSAP timeline
+    });
   </script>
 </head>
 
@@ -172,43 +184,103 @@
           data-light-src="./Images/light-mode-hero.mp4">
         </video>
 
-        <nav class="velorah-nav">
-        </nav>
+        <div class="hero-scrim"></div>
 
-        <div class="velorah-hero__content">
-          <h1 class="velorah-hero__h1 animate-fade-rise">
-            Digital Designer &amp; Developer
-          </h1>
-          <p class="velorah-hero__subtext animate-fade-rise-delay">
-            Crafting high-converting digital experiences through design, motion, and development. Focused on modern
-            UI/UX, motion, and development to craft digital experiences that leave an impact.
-          </p>
-          <a href="/approach" class="liquid-glass btn-large animate-fade-rise-delay-2"
-            style="text-decoration: none; display: inline-block;">
-            Get in Touch
-          </a>
+        <div class="hero-grid">
+
+          <!-- Top meta bar -->
+          <div class="hero-meta animate-fade-rise">
+            <span class="hero-meta__item">
+              Digital Designer<br><em>&amp; Developer</em>
+            </span>
+            <span class="hero-meta__item hero-meta__item--mid">
+              Available Worldwide<br>Remote-friendly
+            </span>
+            <span class="hero-meta__item hero-meta__item--end">
+              <span class="hero-status"><span class="hero-status__dot"></span>Available for work</span><br>
+              2026 &mdash; Portfolio
+            </span>
+          </div>
+
+          <!-- Headline -->
+          <div class="hero-headline">
+            <div class="hero-headline__lead">
+              <span class="hero-index animate-fade-rise">Index / 01</span>
+              <h1 class="velorah-hero__h1 animate-fade-rise">
+                Designing digital<br>
+                experiences with<br>
+                <em>intent &amp; motion.</em>
+              </h1>
+            </div>
+            <div class="hero-headline__aside">
+              <p class="velorah-hero__subtext animate-fade-rise-delay">
+                I craft high-converting digital experiences through design, motion, and development &mdash; modern
+                UI/UX built with obsessive detail and made to leave an impact.
+              </p>
+              <a href="/approach" class="liquid-glass btn-large animate-fade-rise-delay-2"
+                style="text-decoration: none; display: inline-flex;">
+                Get in Touch
+              </a>
+            </div>
+          </div>
+
+          <!-- Bottom caption bar -->
+          <div class="hero-foot animate-fade-rise-delay-2">
+            <span class="hero-scroll">
+              <span class="hero-scroll__line"></span>
+              Scroll to explore
+            </span>
+            <span class="hero-foot__caption">UI/UX &mdash; Branding &mdash; Motion &mdash; Development</span>
+          </div>
+
         </div>
 
       </section>
 
       <!-- ABOUT SECTION -->
       <section class="about-section" id="about-section">
-        <div class="about-section__top">
-          My philosophy.
-        </div>
-        <div class="about-section__text">
-          IT'S NEVER "<span class="hover-reveal"
-            data-imgs="/Images/work/work-1.png,/Images/work/work-2.png,/Images/work/work-3.png">JUST A
-            WEBSITE.</span>"
-          EVERY <span class="hover-reveal"
-            data-imgs="/Images/work/work-4.png,/Images/work/work-5.png,/Images/work/work-1.png">DETAIL
-            MATTERS.</span><br />
-          I CRAFT <span class="hover-reveal"
-            data-imgs="/Images/work/work-2.png,/Images/work/work-3.png,/Images/work/work-4.png">DIGITAL</span>
-          EXPERIENCES. <br />
-          YOUR DESIGN. MY OBSESSION. <br />
-          YOUR BRAND. MY <span class="hover-reveal"
-            data-imgs="/Images/work/work-5.png,/Images/work/work-1.png,/Images/work/work-2.png">PLAYGROUND.</span>
+        <div class="about-inner">
+          <div class="about-head">
+            <span class="about-head__index">02 / Philosophy</span>
+            <span class="about-head__label">What I believe</span>
+          </div>
+
+          <div class="about-section__text">
+            IT'S NEVER "<span class="hover-reveal"
+              data-imgs="/Images/work/work-1.png,/Images/work/work-2.png,/Images/work/work-3.png">JUST A
+              WEBSITE.</span>"
+            EVERY <span class="hover-reveal"
+              data-imgs="/Images/work/work-4.png,/Images/work/work-5.png,/Images/work/work-1.png">DETAIL
+              MATTERS.</span><br />
+            I CRAFT <span class="hover-reveal"
+              data-imgs="/Images/work/work-2.png,/Images/work/work-3.png,/Images/work/work-4.png">DIGITAL</span>
+            EXPERIENCES. <br />
+            YOUR DESIGN. MY OBSESSION. <br />
+            YOUR BRAND. MY <span class="hover-reveal"
+              data-imgs="/Images/work/work-5.png,/Images/work/work-1.png,/Images/work/work-2.png">PLAYGROUND.</span>
+          </div>
+
+          <div class="about-foot">
+            <p class="about-foot__bio">
+              I'm Om &mdash; a digital designer &amp; developer obsessed with the details most people scroll past.
+              I treat every build as a product: considered typography, deliberate motion, and interfaces that earn
+              their keep.
+            </p>
+            <div class="about-foot__meta">
+              <div class="about-stat">
+                <span class="about-stat__num">5+</span>
+                <span class="about-stat__lbl">Years crafting</span>
+              </div>
+              <div class="about-stat">
+                <span class="about-stat__num">40+</span>
+                <span class="about-stat__lbl">Projects shipped</span>
+              </div>
+              <div class="about-stat">
+                <span class="about-stat__num">&infin;</span>
+                <span class="about-stat__lbl">Pixels obsessed over</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Hover Images Container -->
@@ -220,36 +292,41 @@
       </section>
       <section class="services-section" id="services">
         <div class="services-header">
+          <span class="services-header__index">03 / Expertise</span>
           <h2 class="services-header__title">My Expertise</h2>
           <p class="services-header__desc">Where strategy, aesthetics, and emotion come together to shape unforgettable
-            experiences.We blend aesthetics and technology to build digital experiences that stand
-            out.</p>
+            experiences &mdash; blending design and technology to build digital work that stands out.</p>
         </div>
 
         <ul class="services-list" id="services-list">
           <li class="services-item" data-img="/Images/work/work-1.png" data-tag="IDENTITY">
-            <div class="services-item__card"><img src="/Images/work/work-1.png" alt="Branding" /></div>
+            <span class="services-item__num">01</span>
             <span class="services-item__text">BRANDING</span>
+            <div class="services-item__card"><img src="/Images/work/work-1.png" alt="Branding" /></div>
             <span class="services-item__tag">IDENTITY</span>
           </li>
           <li class="services-item" data-img="/Images/work/work-2.png" data-tag="INTERFACES">
-            <div class="services-item__card"><img src="/Images/work/work-2.png" alt="UI/UX Design" /></div>
+            <span class="services-item__num">02</span>
             <span class="services-item__text">UI/UX DESIGN</span>
+            <div class="services-item__card"><img src="/Images/work/work-2.png" alt="UI/UX Design" /></div>
             <span class="services-item__tag">INTERFACES</span>
           </li>
           <li class="services-item" data-img="/Images/work/work-3.png" data-tag="INTERACTION">
-            <div class="services-item__card"><img src="/Images/work/work-3.png" alt="GSAP Animations" /></div>
+            <span class="services-item__num">03</span>
             <span class="services-item__text">GSAP ANIMATIONS</span>
+            <div class="services-item__card"><img src="/Images/work/work-3.png" alt="GSAP Animations" /></div>
             <span class="services-item__tag">INTERACTION</span>
           </li>
           <li class="services-item" data-img="/Images/work/work-4.png" data-tag="EXPERIENCES">
-            <div class="services-item__card"><img src="/Images/work/work-4.png" alt="3D & Motion" /></div>
+            <span class="services-item__num">04</span>
             <span class="services-item__text">3D & MOTION</span>
+            <div class="services-item__card"><img src="/Images/work/work-4.png" alt="3D & Motion" /></div>
             <span class="services-item__tag">EXPERIENCES</span>
           </li>
           <li class="services-item" data-img="/Images/work/work-5.png" data-tag="STRATEGY">
-            <div class="services-item__card"><img src="/Images/work/work-5.png" alt="SEO & Content" /></div>
+            <span class="services-item__num">05</span>
             <span class="services-item__text">SEO & CONTENT</span>
+            <div class="services-item__card"><img src="/Images/work/work-5.png" alt="SEO & Content" /></div>
             <span class="services-item__tag">STRATEGY</span>
           </li>
         </ul>
@@ -260,34 +337,19 @@
         <!-- SELECTED PROJECTS SECTION   -->
         <!-- =========================== -->
         <section class="projects-section" id="projects">
+          <div class="projects-header">
+            <span class="projects-header__index">04 / Selected Work</span>
+            <h2 class="projects-header__title">Selected Work</h2>
+            <span class="projects-header__count">Five projects &mdash; 2024 / 2026</span>
+          </div>
           <div class="projects-container">
             <!-- Card 1 -->
             <div class="project-card" id="card-1">
               <div class="project-card__left">
-                <div class="project-card__title">
-                  <h2>Samani&Partners&ndash;<br />Architect</h2>
-                  <div class="project-card__tags">
-                    <span class="tag">WORDPRESS</span>
-                    <span class="tag">PORTFOLIO</span>
-                    <span class="tag">INTERACTIONS</span>
-                  </div>
+                <div class="project-card__top">
+                  <span class="project-card__index">01</span>
+                  <span class="project-card__year">2025 &mdash; Agency</span>
                 </div>
-                <div class="project-card__bottom">
-                  <p>Designed for Vardhan Samani an Architect in Kolhapur.</p>
-                  <a href="https://samaniandpartners.com/" class="project-btn">LIVE WEBSITE <span
-                      class="arrow">&rarr;</span></a>
-                </div>
-              </div>
-              <div class="project-card__right">
-                <div class="project-card__image">
-                  <img src="/Images/work/work-1.png" alt="Samani and Partners - Architect Portfolio" />
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="project-card" id="card-2">
-              <div class="project-card__left">
                 <div class="project-card__title">
                   <h2>Flowiee &ndash;<br />Web Development Agency</h2>
                   <div class="project-card__tags">
@@ -297,7 +359,7 @@
                   </div>
                 </div>
                 <div class="project-card__bottom">
-                  <p>This site was designed and developed for the Web Development Agency based in Kolhapur. They have
+                  <p>This site was designed and developed for the Web Development Agency. They have
                     luxurious taste in development and design.</p>
                   <a href="https://flowiee.com/" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
                 </div>
@@ -309,9 +371,13 @@
               </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="project-card" id="card-3">
+            <!-- Card 2 -->
+            <div class="project-card" id="card-2">
               <div class="project-card__left">
+                <div class="project-card__top">
+                  <span class="project-card__index">02</span>
+                  <span class="project-card__year">2025 &mdash; Portfolio</span>
+                </div>
                 <div class="project-card__title">
                   <h2>Shritej Patil &ndash;<br />Web Designer</h2>
                   <div class="project-card__tags">
@@ -334,9 +400,13 @@
               </div>
             </div>
 
-            <!-- Card 4 -->
-            <div class="project-card" id="card-4">
+            <!-- Card 3 -->
+            <div class="project-card" id="card-3">
               <div class="project-card__left">
+                <div class="project-card__top">
+                  <span class="project-card__index">03</span>
+                  <span class="project-card__year">2026 &mdash; Automotive</span>
+                </div>
                 <div class="project-card__title">
                   <h2>Automobili Ardent &ndash;<br />Luxury Car Showcase</h2>
                   <div class="project-card__tags">
@@ -359,26 +429,58 @@
               </div>
             </div>
 
-            <!-- Card 5 -->
-            <div class="project-card" id="card-5">
+            <!-- Card 4 -->
+            <div class="project-card" id="card-4">
               <div class="project-card__left">
+                <div class="project-card__top">
+                  <span class="project-card__index">04</span>
+                  <span class="project-card__year">2026 &mdash; Product</span>
+                </div>
                 <div class="project-card__title">
-                  <h2>RAYCAST &ndash;<br />DEVELOPER TOOLS</h2>
+                  <h2>DreamStudio &ndash;<br />AI Creative Suite</h2>
                   <div class="project-card__tags">
-                    <span class="tag">FRONTEND</span>
-                    <span class="tag">WEBFLOW</span>
-                    <span class="tag">PERFORMANCE</span>
+                    <span class="tag">CUSTOM CODED</span>
+                    <span class="tag">INTERACTIVE</span>
+                    <span class="tag">EXPERIENCE SITE</span>
                   </div>
                 </div>
                 <div class="project-card__bottom">
-                  <p>Bringing native app performance to the web. This marketing site pushes the boundaries of what is
-                    possible in modern web development.</p>
-                  <a href="#" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
+                  <p>Designed and developed for an AI-driven creative platform, blending generative visuals with a
+                    refined, immersive interface.</p>
+                  <a href="https://dreamstudio-seven.vercel.app/" class="project-btn">LIVE WEBSITE <span class="arrow">&rarr;</span></a>
                 </div>
               </div>
               <div class="project-card__right">
                 <div class="project-card__image">
-                  <img src="/Images/work/work-5.png" alt="Raycast - Developer Tools Performance Site" />
+                  <img src="/Images/work/DS.png" alt="DreamStudio - AI Creative Suite" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="project-card" id="card-5">
+              <div class="project-card__left">
+                <div class="project-card__top">
+                  <span class="project-card__index">05</span>
+                  <span class="project-card__year">2024 &mdash; Architecture</span>
+                </div>
+                <div class="project-card__title">
+                  <h2>Samani&Partners&ndash;<br />Architect</h2>
+                  <div class="project-card__tags">
+                    <span class="tag">WORDPRESS</span>
+                    <span class="tag">PORTFOLIO</span>
+                    <span class="tag">INTERACTIONS</span>
+                  </div>
+                </div>
+                <div class="project-card__bottom">
+                  <p>Designed for Vardhan Samani, an Architect.</p>
+                  <a href="https://samaniandpartners.com/" class="project-btn">LIVE WEBSITE <span
+                      class="arrow">&rarr;</span></a>
+                </div>
+              </div>
+              <div class="project-card__right">
+                <div class="project-card__image">
+                  <img src="/Images/work/work-1.png" alt="Samani and Partners - Architect Portfolio" />
                 </div>
               </div>
             </div>
@@ -390,6 +492,11 @@
         <!-- EXPLORE THE ARCHIVES SECTION-->
         <!-- =========================== -->
         <section class="archives-section">
+          <div class="archives-head">
+            <span class="archives-head__index">05 / Archive</span>
+            <span class="archives-head__label">Fragments &amp; experiments</span>
+          </div>
+
           <!-- Top Marquee -->
           <div class="archives-marquee-wrapper">
             <div class="archives-marquee" id="archives-marquee">
@@ -414,43 +521,63 @@
         <!-- =========================== -->
         <footer class="footer-section">
           <div class="footer-inner">
+            <!-- Meta bar -->
             <div class="footer-top">
               <div class="footer-top__left">
-                Digital Designer & Developer<br />Portfolio
+                Digital Designer &amp; Developer<br />Portfolio &mdash; 2026
               </div>
               <div class="footer-top__center">
-                Om Shah
+                <span class="footer-status"><span class="footer-status__dot"></span>Available for freelance</span>
               </div>
               <div class="footer-top__right">
-                Available for freelance work<br />
+                Available Worldwide<br />Remote-friendly
               </div>
             </div>
 
-            <div class="footer-middle">
-              <div class="footer-cta" id="footer-cta">
-                <h2 class="footer-cta__text">INTERESTED IN<br />WORKING TOGETHER?</h2>
-                <div class="footer-cta__hand" id="footer-hand">
-                  ✌🏼
+            <!-- Main: CTA + links -->
+            <div class="footer-main">
+              <div class="footer-cta-block">
+                <div class="footer-cta" id="footer-cta">
+                  <h2 class="footer-cta__text">LET'S WORK<br />TOGETHER</h2>
+                  <div class="footer-cta__hand" id="footer-hand">✌🏼</div>
+                </div>
+                <div class="footer-contact">
+                  <div class="footer-email">
+                    <span>Drop me an email</span>
+                    <a href="mailto:omshah7928@gmail.com">omshah7928@gmail.com</a>
+                  </div>
+                  <a href="/approach" class="project-btn footer-btn">GET IN TOUCH <span class="arrow">&rarr;</span></a>
                 </div>
               </div>
-              <div class="footer-email">
-                <span>Drop me an email:</span>
-                <a href="mailto:omshah7928@gmail.com">omshah7928@gmail.com</a>
+
+              <div class="footer-cols">
+                <div class="footer-col">
+                  <span class="footer-col__label">Navigation</span>
+                  <a href="/home">Home</a>
+                  <a href="/home#about-section">About</a>
+                  <a href="/home#services">Services</a>
+                  <a href="/home#projects">Work</a>
+                  <a href="/approach">Approach</a>
+                </div>
+                <div class="footer-col">
+                  <span class="footer-col__label">Socials</span>
+                  <a href="https://www.instagram.com/om_shah18/">Instagram</a>
+                  <a href="#">Twitter</a>
+                  <a href="#">LinkedIn</a>
+                </div>
               </div>
             </div>
 
+            <!-- Bottom bar -->
             <div class="footer-bottom">
               <div class="footer-bottom__left">
-                Design and Developed by: Om Shah
+                Designed &amp; developed by Om Shah
               </div>
               <div class="footer-bottom__center">
-                <a href="https://www.instagram.com/om_shah18/" class="footer-pill">INSTAGRAM</a>
-                <a href="#" class="footer-pill">TWITTER</a>
-                <a href="#" class="footer-pill">LINKEDIN</a>
+                &copy;2026 &ndash; All Rights Reserved
               </div>
               <div class="footer-bottom__right">
-                <a href="#" class="back-to-top" id="back-to-top">Back to top &uarr;</a><br />
-                &copy;2026 &ndash; All Rights Reserved
+                <a href="#" class="back-to-top" id="back-to-top">Back to top &uarr;</a>
               </div>
             </div>
           </div>

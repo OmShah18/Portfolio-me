@@ -504,7 +504,7 @@ if (archivesMarquee) {
   // Populate horizontal marquee text
   for (let i = 0; i < 10; i++) {
     const span = document.createElement('span');
-    span.innerHTML = `EXPLORE THE ARCHIVES <span class="starburst">✺</span>`;
+    span.innerHTML = `PROJECT GALLERY <span class="starburst">✺</span>`;
     archivesMarquee.appendChild(span);
   }
 
@@ -520,18 +520,18 @@ if (archivesMarquee) {
 const archivesGrid = document.getElementById('archives-3d-grid');
 if (archivesGrid) {
   const images = [
-    '/Images/work/work-1.png',
-    '/Images/work/work-2.png',
-    '/Images/work/work-3.png',
-    '/Images/work/work-4.png',
-    '/Images/work/work-5.png',
-    '/Images/work/work-1.png',
-    '/Images/work/work-2.png',
-    '/Images/work/work-3.png',
-    '/Images/work/work-4.png',
-    '/Images/work/work-5.png',
-    '/Images/work/work-1.png',
-    '/Images/work/work-2.png'
+    '/Images/work/Screenshot 2026-05-13 145508.png',
+    '/Images/work/Screenshot 2026-05-13 145548.png',
+    '/Images/work/Screenshot 2026-05-13 145833.png',
+    '/Images/work/Screenshot 2026-05-13 150326.png',
+    '/Images/work/DS.png',
+    '/Images/work/Screenshot 2026-05-13 145508.png',
+    '/Images/work/Screenshot 2026-05-13 145548.png',
+    '/Images/work/Screenshot 2026-05-13 145833.png',
+    '/Images/work/Screenshot 2026-05-13 150326.png',
+    '/Images/work/DS.png',
+    '/Images/work/Screenshot 2026-05-13 145508.png',
+    '/Images/work/Screenshot 2026-05-13 145548.png'
   ];
 
   const cols = archivesGrid.querySelectorAll('.archives-col');
@@ -810,7 +810,7 @@ if (backToTop) {
 // ===========================
 // BUTTON TEXT REVEAL HOVER
 // ===========================
-const buttons = document.querySelectorAll('.liquid-glass, .project-btn, .footer-pill, .back-to-top, .menu-footer__link');
+const buttons = document.querySelectorAll('.liquid-glass, .project-btn, .footer-pill, .back-to-top, .menu-footer__link, .footer-col a');
 
 buttons.forEach(btn => {
   btn.classList.add('reveal-btn');
