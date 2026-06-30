@@ -9,6 +9,9 @@ if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
+// Capture initial hash before we remove it
+const initialHash = window.location.hash;
+
 // Force scroll to top on page load
 window.scrollTo(0, 0);
 // Remove hash to prevent browser from natively jumping to a section on load
@@ -62,6 +65,11 @@ if (preloader) {
       preloader.style.display = 'none'; // Clean up
       document.body.classList.add('preloader-done');
       ScrollTrigger.refresh();
+      if (initialHash) {
+        setTimeout(() => {
+          lenis.scrollTo(initialHash);
+        }, 100);
+      }
     }
   });
 
@@ -98,6 +106,11 @@ if (preloader) {
   });
 } else {
   document.body.classList.add('preloader-done');
+  if (initialHash) {
+    setTimeout(() => {
+      lenis.scrollTo(initialHash);
+    }, 100);
+  }
 }
 
 // ===========================
@@ -245,6 +258,28 @@ menuLinks.forEach(link => {
       menuTimeline.reverse();
       animateToggleToMenu();
       isMenuOpen = false;
+      lenis.start(); // Ensure Lenis is running so we can scroll while menu closes
+    }
+  });
+});
+
+// Intercept anchor links for smooth scrolling
+document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    const targetId = href.startsWith('/#') ? href.substring(1) : href;
+    
+    // Only attempt to scroll if it's a valid ID
+    if (targetId && targetId !== '#') {
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        lenis.start(); // Ensure Lenis is active
+        lenis.scrollTo(targetElement);
+        // Optionally update the URL without jumping
+        window.history.pushState(null, null, href);
+      }
     }
   });
 });
